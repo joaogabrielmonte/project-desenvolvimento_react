@@ -1,7 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+// 1. Importar AnimatePresence e motion
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X, LogIn, Briefcase } from "lucide-react";
 
+// Lista de links atualizada
 const navLinks = [
   { path: "/", label: "Home", id: "home" },
   { path: "/grupo", label: "Grupo", id: "grupo" },
@@ -21,8 +24,19 @@ const Navbar = ({
 }) => {
   const location = useLocation();
   const activePath = location.pathname;
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768; // detecta mobile
   const isMenuDark = isScrolled || activePath !== "/";
+
+  // 2. Variantes de animação para o menu e seus itens
+  const menuVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut", staggerChildren: 0.05 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.2, ease: "easeIn" } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 }
+  };
 
   return (
     <nav
@@ -32,6 +46,7 @@ const Navbar = ({
           : "bg-transparent"
       }`}
     >
+      <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.3.1/dist/framer-motion.umd.min.js"></script>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* LOGO */}
@@ -66,17 +81,10 @@ const Navbar = ({
             ))}
 
             <div className="flex items-center space-x-2">
-              {/* SISTEMAS - comportamento diferente em desktop e mobile */}
               <div className="relative">
                 <button
                   type="button"
-                  onClick={() => {
-                    if (isMobile) {
-                      window.location.href = "/sistemas"; // 👉 redireciona no mobile
-                    } else {
-                      setIsSistemasOpen(!isSistemasOpen); // 👉 dropdown no desktop
-                    }
-                  }}
+                  onClick={() => setIsSistemasOpen(!isSistemasOpen)}
                   className={`flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-all ${
                     isMenuDark
                       ? "text-green-700 bg-green-50 hover:bg-green-100"
@@ -91,8 +99,7 @@ const Navbar = ({
                   />
                 </button>
 
-                {/* DROPDOWN - só aparece no desktop */}
-                {!isMobile && isSistemasOpen && (
+                {isSistemasOpen && (
                   <div className="absolute right-0 mt-2 w-72 bg-white rounded-2xl shadow-lg border border-gray-200 z-50">
                     <div className="p-4 grid grid-cols-1 gap-4">
                       {sistemas.map((s, idx) => (
@@ -120,7 +127,6 @@ const Navbar = ({
                 )}
               </div>
 
-              {/* BOTÃO VAGAS */}
               <button
                 onClick={() =>
                   window.open(
@@ -136,7 +142,7 @@ const Navbar = ({
             </div>
           </div>
 
-          {/* MENU MOBILE */}
+          {/* BOTÃO DO MENU MOBILE */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`md:hidden p-2 rounded-lg transition-colors ${
@@ -150,49 +156,63 @@ const Navbar = ({
         </div>
       </div>
 
-      {/* DROPDOWN MOBILE */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t shadow-lg">
-          <div className="px-4 py-4 space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.id}
-                to={link.path}
-                className="block w-full text-left px-4 py-2 text-gray-700 hover:text-green-600 capitalize"
-              >
-                {link.label}
-              </Link>
-            ))}
+      {/* DROPDOWN MOBILE COM ANIMAÇÃO */}
+      {/* 3. AnimatePresence gerencia a animação de entrada e saída */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          // 4. O container do menu agora é um 'motion.div'
+          <motion.div
+            className="md:hidden bg-white border-t shadow-lg"
+            variants={menuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <div className="px-4 py-4 space-y-2">
+              {navLinks.map((link) => (
+                // 5. Cada item do menu também é um 'motion.div'
+                <motion.div key={link.id} variants={itemVariants}>
+                  <Link
+                    to={link.path}
+                    className="block w-full text-left px-4 py-2 text-gray-700 hover:text-green-600 capitalize rounded-md"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
 
-            <div className="pt-4 space-y-2">
-              {/* SISTEMAS MOBILE → redireciona */}
-              <Link
-                to="/sistemas"
-                className="flex items-center w-full px-4 py-2 text-green-700 bg-green-50 rounded-lg"
-              >
-                <LogIn className="w-4 h-4 mr-2" />
-                Sistemas
-              </Link>
-
-              {/* VAGAS */}
-              <button
-                onClick={() =>
-                  window.open(
-                    "https://jobs.peixe30.com/carreiras/locar-saneamento-ambiental/vagas/",
-                    "_blank"
-                  )
-                }
-                className="flex items-center w-full px-4 py-2 text-white bg-gradient-to-r from-green-600 to-green-700 rounded-lg"
-              >
-                <Briefcase className="w-4 h-4 mr-2" />
-                Vagas
-              </button>
+              <div className="pt-4 space-y-2">
+                <motion.div variants={itemVariants}>
+                  <Link
+                    to="/sistemas"
+                    className="flex items-center w-full px-4 py-2 text-green-700 bg-green-50 rounded-lg"
+                  >
+                    <LogIn className="w-4 h-4 mr-2" />
+                    Sistemas
+                  </Link>
+                </motion.div>
+                <motion.div variants={itemVariants}>
+                  <button
+                    onClick={() =>
+                      window.open(
+                        "https://jobs.peixe30.com/carreiras/locar-saneamento-ambiental/vagas/",
+                        "_blank"
+                      )
+                    }
+                    className="flex items-center w-full px-4 py-2 text-white bg-gradient-to-r from-green-600 to-green-700 rounded-lg"
+                  >
+                    <Briefcase className="w-4 h-4 mr-2" />
+                    Vagas
+                  </button>
+                </motion.div>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
 
 export default Navbar;
+
