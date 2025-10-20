@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Matriz",
+    "address": "Av. Projetada, nº 246",
+    "neighborhood": "Agamenon Magalhães",
+    "cityState": "Caruaru/PE",
+    "cep": "CEP: 55.034-010"
+  },
+  {
+    "id": 2,
+    "name": "Recife",
+    "address": "Estrada das Ubaias, nº 540, 8º andar",
+    "neighborhood": "Casa Forte",
+    "cityState": "Recife/PE",
+    "cep": "CEP: 52.061-080"
+  },
+  {
+    "id": 3,
+    "name": "Curado",
+    "address": "Rua Ministro Mario Andreazza, nº 155",
+    "neighborhood": "Curado",
+    "cityState": "Recife/PE",
+    "cep": "CEP: 50.950-050"
+  },
+  {
+    "id": 4,
+    "name": "Rio de Janeiro",
+    "address": "Rodovia Washington Luiz, nº 6456, Lotes 11 à 26 quadra 68",
+    "neighborhood": "Jardim Gramacho",
+    "cityState": "Duque de Caxias/RJ",
+    "cep": "CEP: 25.055-009"
+  },
+  {
+    "id": 5,
+    "name": "Petrópolis",
+    "address": "Rua Luiz Winter, nº 01",
+    "neighborhood": "Duarte Silveira",
+    "cityState": "Petrópolis/RJ",
+    "cep": "CEP: 26.665-431"
+  },
+  {
+    "id": 6,
+    "name": "São Paulo",
+    "address": "Av. Paulista, nº 1471, Conjunto 918/919",
+    "neighborhood": "Bela Vista",
+    "cityState": "São Paulo/SP",
+    "cep": "CEP: 01.311-200"
+  },
+  {
+    "id": 7,
+    "name": "Várzea Grande",
+    "address": "Av. Governador Júlio Campos, nº 4997",
+    "neighborhood": "Jardim Glória II",
+    "cityState": "Várzea Grande/MT",
+    "cep": "CEP: 78.140-785"
+  }
+]

@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Customizações */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* COLE O CÓDIGO DA ANIMAÇÃO AQUI 
+*/
+.animate-marquee {
+  display: flex;
+  gap: 16px;
+  animation: marquee 15s linear infinite; /* mais rápido */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
