@@ -42,13 +42,14 @@ const EnvironmentSection = () => {
               src="/images/ambiental-secundaria.jpg"
               alt="Projeto de Educação Ambiental"
               className="
-                w-48 h-48 object-cover rounded-xl shadow-lg border-4 border-gray-800
-                mt-6
-                md:mt-0
-                md:absolute md:-bottom-8 md:-right-8
-                md:transform-none
-                mx-auto md:mx-0
-              "
+              w-44 h-44 sm:w-48 sm:h-48 object-cover rounded-xl shadow-lg border-4 border-gray-800
+              mt-6
+              md:mt-0
+              md:absolute md:-bottom-8 md:-right-8
+              md:transform-none
+              mx-auto md:mx-0
+              relative left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0
+            "
             />
           </div>
         </div>
