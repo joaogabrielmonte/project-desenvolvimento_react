@@ -12,12 +12,16 @@
   }
 }
 
-/* COLE O CÓDIGO DA ANIMAÇÃO AQUI 
-*/
+/* Animação do Carrossel (se ainda for usada em algum lugar) */
 .animate-marquee {
   display: flex;
   gap: 16px;
-  animation: marquee 15s linear infinite; /* mais rápido */
+  animation: marquee 40s linear infinite; 
+  animation-play-state: paused;
+}
+
+.carousel-container:hover .animate-marquee {
+  animation-play-state: running;
 }
 
 @keyframes marquee {
@@ -28,3 +32,20 @@
     transform: translateX(-50%);
   }
 }
+
+/* Animação de fade-in para o conteúdo da nova página */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: fadeIn 0.5s ease-out;
+}
+
