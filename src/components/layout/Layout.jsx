@@ -69,9 +69,12 @@ const Layout = () => {
         <Outlet />
       </main>
 
+      
+
       {/* LÓGICA CONDICIONAL: Mostra a seção de filiais em todas as páginas, EXCETO na /filiais */}
       {location.pathname !== '/filiais' && <FiliaisSection />}
-      <ContactSection />
+      {location.pathname !== '/contato' && <ContactSection />}
+     
 
       <Footer />
     </div>
