@@ -24,7 +24,7 @@ const PessoasCulturaPage = () => {
           
           {/* Coluna 1: Conteúdo de Texto (ocupa 3 de 5 colunas) */}
           <div className="md:col-span-3 text-gray-700 space-y-4 leading-relaxed">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Recursos + Humanos</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">  Pessoas & <span style={{ color: "#038242" }}>Cultura</span></h2>
             <p>
               Muito mais do que entrevistar, selecionar e contratar funcionários, temos a preocupação em conhecer as necessidades e expectativas com um olhar humano, pensando no bem estar de todos, no crescimento e desenvolvimento profissional de cada funcionário.
             </p>
