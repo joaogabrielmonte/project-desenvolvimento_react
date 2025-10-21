@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-// 1. Importar AnimatePresence e motion
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X, LogIn, Briefcase } from "lucide-react";
 
-// Lista de links atualizada
 const navLinks = [
   { path: "/", label: "Home", id: "home" },
   { path: "/grupo", label: "Grupo", id: "grupo" },
@@ -26,16 +24,39 @@ const Navbar = ({
   const activePath = location.pathname;
   const isMenuDark = isScrolled || activePath !== "/";
 
-  // 2. Variantes de animação para o menu e seus itens
+  // 🧩 Ref e listener para fechar o dropdown de Sistemas ao clicar fora
+  const sistemasRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        isSistemasOpen &&
+        sistemasRef.current &&
+        !sistemasRef.current.contains(event.target)
+      ) {
+        setIsSistemasOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isSistemasOpen, setIsSistemasOpen]);
+
   const menuVariants = {
     hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut", staggerChildren: 0.05 } },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.2, ease: "easeIn" } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3, ease: "easeOut", staggerChildren: 0.05 },
+    },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.2, ease: "easeIn" } },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
@@ -46,7 +67,6 @@ const Navbar = ({
           : "bg-transparent"
       }`}
     >
-      <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.3.1/dist/framer-motion.umd.min.js"></script>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* LOGO */}
@@ -81,7 +101,8 @@ const Navbar = ({
             ))}
 
             <div className="flex items-center space-x-2">
-              <div className="relative">
+              {/* 👇 Ref aplicada aqui */}
+              <div className="relative" ref={sistemasRef}>
                 <button
                   type="button"
                   onClick={() => setIsSistemasOpen(!isSistemasOpen)}
@@ -157,10 +178,8 @@ const Navbar = ({
       </div>
 
       {/* DROPDOWN MOBILE COM ANIMAÇÃO */}
-      {/* 3. AnimatePresence gerencia a animação de entrada e saída */}
       <AnimatePresence>
         {isMenuOpen && (
-          // 4. O container do menu agora é um 'motion.div'
           <motion.div
             className="md:hidden bg-white border-t shadow-lg"
             variants={menuVariants}
@@ -170,7 +189,6 @@ const Navbar = ({
           >
             <div className="px-4 py-4 space-y-2">
               {navLinks.map((link) => (
-                // 5. Cada item do menu também é um 'motion.div'
                 <motion.div key={link.id} variants={itemVariants}>
                   <Link
                     to={link.path}
@@ -215,4 +233,3 @@ const Navbar = ({
 };
 
 export default Navbar;
-
