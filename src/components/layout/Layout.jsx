@@ -21,7 +21,7 @@ const sistemas = [
     desc: "Acompanhamento de colaboradores e dados de RH.",
   },
   {
-    name: "Locar Universidade",
+    name: "Universidade Corporativa",
     url: "https://universidade-corporativa-grupo-locar.memberkit.com.br", 
     image: "/images/sistemas/locar-universidade.png",
     desc: "Plataforma de treinamentos e capacitação online.",
