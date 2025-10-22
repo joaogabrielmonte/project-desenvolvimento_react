@@ -1,65 +1,114 @@
-Locar Landing Website
+Locar Website Institucional
 
-Este projeto é o website institucional da Locar Gestão de Resíduos, desenvolvido com React e Vite, utilizando Tailwind CSS para estilização e React Router DOM para navegação.
+Descrição Geral
 
-Funcionalidades
+Este repositório contém o código-fonte do website institucional da Locar Gestão de Resíduos. O projeto foi desenvolvido utilizando React com Vite como ferramenta de build, estilizado com Tailwind CSS e Framer Motion para animações. A navegação é gerida pelo React Router DOM, criando uma experiência de Single Page Application (SPA) fluida.
 
-Página inicial (Landing Page) com várias secções informativas.
+O website serve como a principal presença online da Locar, apresentando a empresa, seus serviços, valores, notícias e informações de contato de forma clara e profissional.
 
-Páginas dedicadas para Grupo, Serviços, Socioambiental, Pessoas & Cultura, Contato, Filiais, Sistemas e Comunicados.
+Funcionalidades Principais
 
-Design responsivo adaptado para desktop e mobile.
+Página Inicial Abrangente: Apresenta um resumo visual e informativo da empresa, incluindo:
 
-Transições de página animadas.
+Secção Hero com proposta de valor.
 
-Formulário de contato funcional integrado com Formspree.
+Apresentação das empresas do Grupo Locar (com modal interativo).
 
-Listagem dinâmica de comunicados e filiais a partir de ficheiros JSON.
+Visão geral dos Serviços (com sistema de abas interativo).
 
-Páginas de erro personalizadas (404).
+Secção dedicada ao Compromisso Socioambiental (com imagens e estatísticas).
+
+Chamada para Carreiras ("Faça Parte do Nosso Time").
+
+Resumo dos últimos Comunicados.
+
+Secção de resumo das Filiais (visível em todas as páginas).
+
+Páginas Dedicadas:
+
+/grupo: Detalhes sobre a história, estrutura e empresas do Grupo Locar.
+
+/servicos: Descrição aprofundada de cada serviço oferecido.
+
+/meio-ambiente: Informações sobre as práticas sustentáveis e responsabilidade social.
+
+/pessoas-cultura: Foco na equipa, ambiente de trabalho e oportunidades de carreira.
+
+/contato: Formulário de contato funcional (integrado com Formspree) e mapa.
+
+/filiais: Lista completa de todas as unidades da Locar.
+
+/sistemas: Links de acesso às plataformas internas (GirosPlus, Universidade Corporativa).
+
+/comunicados: Arquivo completo de todos os comunicados internos.
+
+Design Responsivo: Adaptado para uma visualização otimizada em desktops, tablets e smartphones.
+
+Animações e Transições: Utilização do Framer Motion para transições suaves entre páginas e animações subtis em elementos da interface.
+
+Conteúdo Dinâmico: Carregamento de dados para Comunicados e Filiais a partir de ficheiros JSON estáticos na pasta public.
+
+Páginas de Erro: Página 404 personalizada para URLs não encontradas e um Error Boundary para capturar erros inesperados na aplicação.
+
+Estrutura do Projeto
+
+/public             # Ficheiros estáticos (imagens, JSONs, index.html)
+/src
+  /components       # Componentes reutilizáveis
+    /landing        # Secções específicas da página inicial
+    /layout         # Componentes do layout principal (Navbar, Footer, etc.)
+    ErrorBoundary.jsx
+  /pages            # Componentes de página (rotas principais)
+  App.jsx           # Configuração das rotas principais
+  index.css         # Estilos globais e configuração do Tailwind
+  main.jsx          # Ponto de entrada da aplicação React
+...                 # Outros ficheiros de configuração (vite.config.js, etc.)
+
 
 Pré-requisitos
 
-Certifique-se de que tem o Node.js (versão 18 ou superior recomendada) e o npm instalados na sua máquina.
+Node.js (v18 ou superior recomendado)
+
+npm (geralmente instalado com o Node.js)
 
 Instalação
 
-Clone este repositório:
+Clone o repositório para a sua máquina local:
 
 git clone <url-do-seu-repositorio>
 cd locar-website
 
 
-Instale as dependências do projeto:
+Instale as dependências necessárias:
 
 npm install
 
 
-Executando Localmente
+Execução em Ambiente de Desenvolvimento
 
-Para iniciar o servidor de desenvolvimento e visualizar o site no seu navegador:
+Para iniciar o servidor de desenvolvimento Vite e visualizar o site:
 
 npm run dev
 
 
-O site estará disponível, por padrão, em http://localhost:5173. Se o script dev no seu package.json incluir --host, também estará acessível na sua rede local (ex: http://192.168.x.x:5173).
+O site estará acessível em http://localhost:5173 por padrão. Se o script dev incluir a flag --host (como em "dev": "vite --host" no package.json), ele também estará disponível na sua rede local.
 
-Build para Produção
+Geração do Build para Produção
 
-Para gerar os ficheiros estáticos otimizados para publicação:
+Para compilar e otimizar o site para publicação:
 
 npm run build
 
 
-Este comando criará uma pasta dist (ou build, dependendo da configuração do Vite) na raiz do projeto. O conteúdo desta pasta é o que deve ser carregado para o servidor de hospedagem.
+Este comando gera a pasta dist (configuração padrão do Vite) na raiz do projeto. Esta pasta contém todos os ficheiros estáticos (index.html, CSS, JavaScript, imagens, etc.) necessários para o deploy.
 
-Configuração do Servidor
+Deploy (Publicação)
 
-Este é um Single Page Application (SPA) React que utiliza o React Router DOM para gerir as rotas no lado do cliente. Para que as rotas funcionem corretamente num servidor web, é necessário configurar o servidor para redirecionar todas as solicitações de páginas não encontradas para o index.html principal.
+Carregue o Conteúdo: Envie apenas o conteúdo da pasta dist gerada no passo anterior para a pasta raiz do seu servidor de hospedagem (ex: public_html num cPanel).
 
-Apache (Ex: cPanel)
+Configure o Servidor para SPAs: Como este é um Single Page Application, o servidor precisa ser configurado para redirecionar todas as solicitações de rotas (que não sejam ficheiros estáticos existentes) para o index.html.
 
-Se estiver a hospedar num servidor Apache, crie um ficheiro chamado .htaccess na pasta raiz do seu site (ex: public_html, onde colocou o conteúdo da pasta dist) com o seguinte conteúdo:
+Apache (ex: cPanel): Crie um ficheiro .htaccess na pasta raiz (public_html) com o seguinte conteúdo:
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -71,9 +120,7 @@ Se estiver a hospedar num servidor Apache, crie um ficheiro chamado .htaccess na
 </IfModule>
 
 
-Vercel
-
-Se estiver a fazer deploy na Vercel, crie um ficheiro vercel.json na raiz do seu projeto com o seguinte conteúdo:
+Vercel: Crie um ficheiro vercel.json na raiz do projeto (antes do build) com o seguinte conteúdo:
 
 {
   "rewrites": [
@@ -85,18 +132,28 @@ Se estiver a fazer deploy na Vercel, crie um ficheiro vercel.json na raiz do seu
 }
 
 
+(A Vercel geralmente deteta frameworks React/Vite e aplica esta regra automaticamente, mas ter o ficheiro garante o comportamento).
+
 Tecnologias Utilizadas
 
-React
+Framework/Library: React 18
 
-Vite
+Build Tool: Vite
 
-React Router DOM
+Roteamento: React Router DOM v6
 
-Tailwind CSS
+Estilização: Tailwind CSS v3
 
-Framer Motion
+Animações: Framer Motion
 
-Lucide React (Ícones)
+Ícones: Lucide React
 
-Formspree (Processamento de formulário)
+Formulários: Integração com Formspree
+
+Contribuição
+
+Contribuições são bem-vindas. Por favor, siga as diretrizes padrão de fork e pull request.
+
+Licença
+
+(Opcional: Adicione aqui a licença do seu projeto, ex: MIT License)
