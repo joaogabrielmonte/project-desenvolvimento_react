@@ -12,6 +12,7 @@ import PessoasCulturaPage from "./pages/PessoasCulturaPage";
 import ContatoPage from "./pages/ContatoPage";
 import FiliaisPage from "./pages/FiliaisPage";
 import SistemasPage from "./pages/SistemasPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -32,6 +33,11 @@ function App() {
           <Route path="sistemas" element={<SistemasPage />} />  
 
         </Route> {/* Fim da rota "pai" */}
+
+           
+        {/* 2. Rota 404 (Catch-all) - Fora do Layout */}
+        {/* O asterisco (*) captura qualquer URL que não combinou com as rotas acima */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
