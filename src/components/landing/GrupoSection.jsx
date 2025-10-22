@@ -27,6 +27,13 @@ const companies = [
     color: "#182d70",
     description: "A I9 Paulista é a empresa responsável pela concessão dos resíduos sólidos da cidade do Paulista/PE por um período de 25 anos, garantindo a gestão completa e de longo prazo para o município.",
   },
+  {
+    name: "I9 Jequié",
+    sector: "Resíduos Municipal",
+    logo: "/images/i9-jequie.png",
+    color: "#182d70",
+    description: "A I9 Jequié é a empresa responsável pela concessão dos resíduos sólidos da cidade de Jequié/BA, oferecendo soluções eficientes e sustentáveis para a gestão dos resíduos municipais.",
+  }
 ];
 
 const GrupoSection = () => {
@@ -49,7 +56,7 @@ const GrupoSection = () => {
         </div>
 
         {/* O Grid estático de 3 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-auto-fit">
           {companies.map((company) => (
             <div
               key={company.name}
