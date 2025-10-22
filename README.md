@@ -153,7 +153,3 @@ Formulários: Integração com Formspree
 Contribuição
 
 Contribuições são bem-vindas. Por favor, siga as diretrizes padrão de fork e pull request.
-
-Licença
-
-(Opcional: Adicione aqui a licença do seu projeto, ex: MIT License)
