@@ -1,69 +1,102 @@
-# React + TypeScript + Vite
+Locar Landing Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é o website institucional da Locar Gestão de Resíduos, desenvolvido com React e Vite, utilizando Tailwind CSS para estilização e React Router DOM para navegação.
 
-Currently, two official plugins are available:
+Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Página inicial (Landing Page) com várias secções informativas.
 
-## Expanding the ESLint configuration
+Páginas dedicadas para Grupo, Serviços, Socioambiental, Pessoas & Cultura, Contato, Filiais, Sistemas e Comunicados.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Design responsivo adaptado para desktop e mobile.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Transições de página animadas.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Formulário de contato funcional integrado com Formspree.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Listagem dinâmica de comunicados e filiais a partir de ficheiros JSON.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Páginas de erro personalizadas (404).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Pré-requisitos
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Certifique-se de que tem o Node.js (versão 18 ou superior recomendada) e o npm instalados na sua máquina.
+
+Instalação
+
+Clone este repositório:
+
+git clone <url-do-seu-repositorio>
+cd locar-website
+
+
+Instale as dependências do projeto:
+
+npm install
+
+
+Executando Localmente
+
+Para iniciar o servidor de desenvolvimento e visualizar o site no seu navegador:
+
+npm run dev
+
+
+O site estará disponível, por padrão, em http://localhost:5173. Se o script dev no seu package.json incluir --host, também estará acessível na sua rede local (ex: http://192.168.x.x:5173).
+
+Build para Produção
+
+Para gerar os ficheiros estáticos otimizados para publicação:
+
+npm run build
+
+
+Este comando criará uma pasta dist (ou build, dependendo da configuração do Vite) na raiz do projeto. O conteúdo desta pasta é o que deve ser carregado para o servidor de hospedagem.
+
+Configuração do Servidor
+
+Este é um Single Page Application (SPA) React que utiliza o React Router DOM para gerir as rotas no lado do cliente. Para que as rotas funcionem corretamente num servidor web, é necessário configurar o servidor para redirecionar todas as solicitações de páginas não encontradas para o index.html principal.
+
+Apache (Ex: cPanel)
+
+Se estiver a hospedar num servidor Apache, crie um ficheiro chamado .htaccess na pasta raiz do seu site (ex: public_html, onde colocou o conteúdo da pasta dist) com o seguinte conteúdo:
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+
+Vercel
+
+Se estiver a fazer deploy na Vercel, crie um ficheiro vercel.json na raiz do seu projeto com o seguinte conteúdo:
+
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+
+
+Tecnologias Utilizadas
+
+React
+
+Vite
+
+React Router DOM
+
+Tailwind CSS
+
+Framer Motion
+
+Lucide React (Ícones)
+
+Formspree (Processamento de formulário)
