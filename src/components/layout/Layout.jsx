@@ -14,12 +14,12 @@ const sistemas = [
     image: "/images/sistemas/sistema-giros.png",
     desc: "Gestão integrada de processos e serviços.",
   },
-  // {
-  //   name: "Censo RH",
-  //   url: "https://sistemas.locar.srv.br/censo",
-  //   image: "/images/sistemas/censo-Rh.png",
-  //   desc: "Acompanhamento de colaboradores e dados de RH.",
-  // },
+  {
+    name: "Censo RH",
+    url: "https://sistemas.locar.srv.br/censo",
+    image: "/images/sistemas/censo-Rh.png",
+    desc: "Acompanhamento de colaboradores e dados de RH.",
+  },
   {
     name: "Universidade Corporativa",
     url: "https://universidade-corporativa-grupo-locar.memberkit.com.br", 
