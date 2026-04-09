@@ -30,6 +30,9 @@ const CookieBanner = () => {
     setVisible(false);
   };
 
+  // Fechar com X: apenas esconde na sessão atual, sem salvar no localStorage
+  const dismiss = () => setVisible(false);
+
   if (!visible) return null;
 
   return (
@@ -39,49 +42,52 @@ const CookieBanner = () => {
       aria-label="Aviso de cookies"
       aria-modal="false"
     >
-      <div className="max-w-4xl mx-auto bg-gray-900 text-white rounded-2xl shadow-2xl border border-gray-700 p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-        {/* Ícone */}
-        <div className="flex-shrink-0 bg-green-600/20 rounded-xl p-3">
-          <Cookie className="w-6 h-6 text-green-400" />
-        </div>
+      <div className="max-w-4xl mx-auto bg-gray-900 text-white rounded-2xl shadow-2xl border border-gray-700 p-5 sm:p-6">
+        {/* Linha superior: ícone + texto + X */}
+        <div className="flex items-start gap-4">
+          {/* Ícone */}
+          <div className="flex-shrink-0 bg-green-600/20 rounded-xl p-3">
+            <Cookie className="w-6 h-6 text-green-400" />
+          </div>
 
-        {/* Texto */}
-        <div className="flex-1 text-sm text-gray-300 leading-relaxed">
-          Utilizamos cookies para melhorar sua experiência de navegação. Ao continuar,
-          você concorda com nossa{" "}
-          <a
-            href="/politica-privacidade"
-            className="text-green-400 hover:text-green-300 underline underline-offset-2 transition-colors"
+          {/* Texto */}
+          <div className="flex-1 text-sm text-gray-300 leading-relaxed">
+            Utilizamos cookies para melhorar sua experiência de navegação. Ao continuar,
+            você concorda com nossa{" "}
+            <a
+              href="/politica-privacidade"
+              className="text-green-400 hover:text-green-300 underline underline-offset-2 transition-colors"
+            >
+              Política de Privacidade
+            </a>
+            .
+          </div>
+
+          {/* Fechar (X) — sempre dentro da caixa, alinhado ao topo */}
+          <button
+            onClick={dismiss}
+            aria-label="Fechar"
+            className="flex-shrink-0 text-gray-500 hover:text-white transition-colors mt-0.5"
           >
-            Política de Privacidade
-          </a>
-          .
+            <X className="w-4 h-4" />
+          </button>
         </div>
 
-        {/* Botões */}
-        <div className="flex items-center gap-3 flex-shrink-0 w-full sm:w-auto">
+        {/* Botões na linha de baixo */}
+        <div className="flex items-center justify-end gap-3 mt-4">
           <button
             onClick={decline}
-            className="flex-1 sm:flex-none px-4 py-2 text-sm text-gray-400 hover:text-white border border-gray-600 hover:border-gray-400 rounded-lg transition-colors"
+            className="px-4 py-2 text-sm text-gray-400 hover:text-white border border-gray-600 hover:border-gray-400 rounded-lg transition-colors"
           >
             Recusar
           </button>
           <button
             onClick={accept}
-            className="flex-1 sm:flex-none px-5 py-2 text-sm font-semibold bg-green-600 hover:bg-green-500 text-white rounded-lg transition-colors"
+            className="px-5 py-2 text-sm font-semibold bg-green-600 hover:bg-green-500 text-white rounded-lg transition-colors"
           >
             Aceitar
           </button>
         </div>
-
-        {/* Fechar (X) */}
-        <button
-          onClick={decline}
-          aria-label="Fechar"
-          className="absolute top-3 right-3 sm:relative sm:top-auto sm:right-auto text-gray-500 hover:text-white transition-colors flex-shrink-0"
-        >
-          <X className="w-4 h-4" />
-        </button>
       </div>
     </div>
   );
