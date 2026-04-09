@@ -1,3 +1,9 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 import React, { useState } from "react"; // Importar o useState
 import {
   Recycle,
@@ -13,18 +19,20 @@ import {
 // Os dados dos serviços (sem alteração)
 const services = [
   {
-    icon: <Recycle className="w-6 h-6" />, // Ícone um pouco menor para o menu
+    icon: <Recycle className="w-6 h-6" />,
     title: "Coleta de Resíduos Sólidos",
+    image: "/images/servicos/coletaderesiduossolidos.png",
     description: `Coletar o lixo significa recolher o lixo acondicionado por quem o produz para encaminhá-lo, mediante transporte adequado, a uma estação de transferência, tratamento ou disposição final. O objetivo é evitar a proliferação de vetores causadores de doenças, como ratos, baratas e moscas.`,
     features: [
-      "Domiciliares", "Containerizada", "Comerciais", "Públicos", 
-      "Podas de árvores", "Porta a porta", "Volumosos", "Construção civil", 
+      "Domiciliares", "Containerizada", "Comerciais", "Públicos",
+      "Podas de árvores", "Porta a porta", "Volumosos", "Construção civil",
       "Seletiva", "Hospitalar",
     ],
   },
   {
     icon: <Truck className="w-6 h-6" />,
     title: "Varrição de Vias",
+    image: "/images/servicos/varricaodevias.png",
     description: `Varrição ou varredura é a principal atividade de limpeza de logradouros públicos. Inclui remoção de areia, folhas, papéis, pontas de cigarro, dependendo da arborização, trânsito de veículos, estado do calçamento e circulação de pedestres.`,
     features: [
       "Limpeza urbana", "Prevenção de acúmulo de lixo", "Segurança e higiene pública",
@@ -33,6 +41,7 @@ const services = [
   {
     icon: <Shield className="w-6 h-6" />,
     title: "Capinação e Pintura de Meio Fio",
+    image: "/images/servicos/capinaocaodevias.png",
     description: `Atividade essencial em ruas, passeios sem asfalto e margens de rios e canais. Realizamos capinação manual e pintura de meio-fio, garantindo limpeza e manutenção das vias.`,
     features: [
       "Capinação manual", "Pintura de meio-fio", "Limpeza de áreas externas",
@@ -41,6 +50,7 @@ const services = [
   {
     icon: <Leaf className="w-6 h-6" />,
     title: "Limpeza de Feiras e Praias",
+    image: "/images/servicos/limpezadefeiraseeventos.png",
     description: `Após o término das feiras, a retirada do lixo deve ser rápida para desobstruir o trânsito e evitar fermentação da matéria orgânica. A limpeza de praias pode ser manual ou mecânica, removendo resíduos de banhistas e detritos trazidos pela maré.`,
     features: [
       "Feiras livres", "Praias", "Horários programados", "Equipamentos manuais e mecânicos",
@@ -48,7 +58,8 @@ const services = [
   },
   {
     icon: <Building2 className="w-6 h-6" />,
-    title: "Unidade de Transferência", // Título encurtado
+    title: "Unidade de Transferência",
+    image: "/images/servicos/aterrocandeias.png",
     description: `Unidade específica para descarrego temporário de resíduos, com desnível entre pavimentos, permitindo que caminhões façam a descarga diretamente em veículos de transferência.`,
     features: [
       "Descarrego eficiente", "Redução de transporte direto", "Organização logística",
@@ -57,12 +68,14 @@ const services = [
   {
     icon: <FileText className="w-6 h-6" />,
     title: "Operação de Aterro Sanitário",
+    image: "/images/servicos/aterrocomsul.png",
     description: `Gerenciamento completo do aterro sanitário, incluindo projeto, remediação, construção e operação, garantindo destinação ambientalmente correta dos resíduos.`,
     features: ["Projeto", "Remediação", "Construção e Operação"],
   },
   {
     icon: <Users className="w-6 h-6" />,
-    title: "Educação Ambiental", // Título encurtado
+    title: "Educação Ambiental",
+    image: "/images/servicos/educacaoambiental.png",
     description: `Trabalho de envolvimento, aprendizagem e mudança de comportamento da população através de cursos, debates e participação de profissionais experientes.`,
     features: [
       "Cursos educativos", "Debates", "Engajamento comunitário", "Mudança de comportamento",
@@ -114,10 +127,20 @@ const ServicesSection = () => {
 
           {/* Coluna 2: O CONTEÚDO DO SERVIÇO ATIVO */}
           <div className="md:col-span-2 bg-gray-50 rounded-2xl p-8 sticky top-28">
-            {/* 4. O conteúdo aqui é dinâmico, baseado no 'activeService' */}
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              {activeService.title}
-            </h3>
+            {/* Cabeçalho: título + imagem lado a lado */}
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <h3 className="text-3xl font-bold text-gray-900 leading-tight">
+                {activeService.title}
+              </h3>
+              {activeService.image && (
+                <img
+                  key={activeService.image}
+                  src={activeService.image}
+                  alt={activeService.title}
+                  className="w-48 h-32 object-cover rounded-xl shadow-md flex-shrink-0"
+                />
+              )}
+            </div>
             <p className="text-gray-600 mb-6 leading-relaxed">
               {activeService.description}
             </p>

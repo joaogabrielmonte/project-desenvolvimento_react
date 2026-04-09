@@ -1,7 +1,13 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 import React, { useState } from "react";
 import { ArrowRight } from "lucide-react";
-// 1. Importar o novo CompanyModal
-import CompanyModal from "./CompanyModal"; 
+import CompanyModal from "./CompanyModal";
+import MapaBrasil from "../MapaBrasil"; 
 
 // 2. ATUALIZAR 'companies' para incluir a 'description' de cada um
 // (Eu peguei os textos daquela sua página /grupo que fizemos)
@@ -91,11 +97,65 @@ const GrupoSection = () => {
         </div>
       </div>
 
-      {/* 5. Renderizar o novo Modal, passando a empresa selecionada */}
       <CompanyModal 
         company={selectedCompany} 
         onClose={() => setSelectedCompany(null)} 
       />
+
+      {/* Nossa Presença Nacional */}
+      <div
+        className="mt-20 mx-4 sm:mx-6 lg:mx-8 rounded-3xl overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #021a0e 0%, #034422 100%)" }}
+      >
+        <div className="max-w-7xl mx-auto px-8 py-14">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+
+            {/* Texto lateral */}
+            <div className="lg:w-2/5 flex-shrink-0">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c3cd86] mb-4 block">
+                Presença Nacional
+              </span>
+              <h3 className="text-3xl md:text-4xl font-black text-white leading-tight mb-5">
+                Onde atuamos
+              </h3>
+              <p className="text-white/50 text-sm leading-relaxed mb-10">
+                Com operações em 7 estados brasileiros e mais de 30 municípios atendidos, o Grupo Locar também tem presença internacional na Bolívia.
+              </p>
+
+              {/* Mini stats */}
+              <div className="grid grid-cols-3 gap-6">
+                {[
+                  ["30+", "Municípios"],
+                  ["7", "Estados"],
+                  ["2", "Países"],
+                ].map(([value, label]) => (
+                  <div key={label}>
+                    <div className="text-3xl font-black text-white leading-none">{value}</div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-widest mt-1">{label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Legenda */}
+              <div className="mt-10 flex flex-col gap-3">
+                <div className="flex items-center gap-3">
+                  <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: "#038242", boxShadow: "0 0 8px rgba(3,130,66,0.7)" }} />
+                  <span className="text-white/60 text-xs">Estados ativos no Brasil</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: "#c3cd86", boxShadow: "0 0 8px rgba(195,205,134,0.7)" }} />
+                  <span className="text-white/60 text-xs">Bolívia (Santa Cruz de la Sierra)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Mapa */}
+            <div className="lg:w-3/5 w-full">
+              <MapaBrasil className="w-full max-w-lg mx-auto" />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

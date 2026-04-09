@@ -1,3 +1,9 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 import React from "react";
 import { ExternalLink } from "lucide-react";
 
@@ -20,6 +26,12 @@ const sistemas = [
     url: "https://universidade-corporativa-grupo-locar.memberkit.com.br",
     image: "/images/sistemas/locar-universidade.png",
     desc: "Plataforma de treinamentos e capacitação online.",
+  },
+  {
+    name: "Microsoft 365",
+    url: "https://m365.cloud.microsoft/",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Microsoft_Office_logo_%282019%E2%80%93present%29.svg/640px-Microsoft_Office_logo_%282019%E2%80%93present%29.svg.png",
+    desc: "E-mail, Teams, Word, Excel e demais ferramentas Microsoft.",
   },
 ];
 

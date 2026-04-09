@@ -1,3 +1,9 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 import React, { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -5,6 +11,7 @@ import Footer from "./Footer";
 import FiliaisSection from "../landing/FiliaisSection";
 import { Contact } from "lucide-react";
 import ContactSection from "../landing/ContactSection";
+import ChatBot from "../ChatBot";
 
 // Os dados que o Navbar precisa
 const sistemas = [
@@ -25,6 +32,12 @@ const sistemas = [
     url: "https://universidade-corporativa-grupo-locar.memberkit.com.br", 
     image: "/images/sistemas/locar-universidade.png",
     desc: "Plataforma de treinamentos e capacitação online.",
+  },
+  {
+    name: "Microsoft 365",
+    url: "https://portal.office.com/",
+    image: "/images/sistemas/microsoft-365.png",
+    desc: "E-mail, Teams, Word, Excel e demais ferramentas Microsoft.",
   },
 ];
 
@@ -66,17 +79,20 @@ const Layout = () => {
 
       {/* O conteúdo da página cresce para preencher o espaço */}
       <main className="flex-grow">
-        <Outlet />
+        <div key={location.key} className="page-transition">
+          <Outlet />
+        </div>
       </main>
 
       
 
-      {/* LÓGICA CONDICIONAL: Mostra a seção de filiais em todas as páginas, EXCETO na /filiais */}
-      {location.pathname !== '/filiais' && <FiliaisSection />}
-      {location.pathname !== '/contato' && <ContactSection />}
+      {/* Oculta na /filiais, /ouvidoria, /grupo e /denuncia */}
+      {/* FiliaisSection desativada temporariamente */}
+      {location.pathname !== '/contato' && location.pathname !== '/ouvidoria' && location.pathname !== '/denuncia' && <ContactSection />}
      
 
       <Footer />
+      <ChatBot />
     </div>
   );
 };

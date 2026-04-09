@@ -1,5 +1,12 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 import React from "react";
-import { Users, Briefcase, Mail, ArrowRight } from "lucide-react";
+import { Users, Briefcase, Mail, ArrowRight, ShieldCheck } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PessoasCulturaPage = () => {
   return (
@@ -66,6 +73,36 @@ const PessoasCulturaPage = () => {
           </div>
 
         </div>
+
+        {/* ── Card Canal de Denúncia Anônima ── */}
+        <div className="mt-14">
+          <div
+            className="flex flex-col sm:flex-row items-center gap-6 rounded-2xl p-8 shadow-md border border-green-100"
+            style={{ background: "linear-gradient(135deg, #f0f9f4 0%, #e6f4ec 100%)" }}
+          >
+            <div
+              className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm"
+              style={{ background: "#034422" }}
+            >
+              <ShieldCheck className="w-8 h-8 text-white" />
+            </div>
+            <div className="flex-1 text-center sm:text-left">
+              <h3 className="text-xl font-bold text-gray-900 mb-1">Canal de Denúncia Anônima</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Relate irregularidades, assédio, fraudes ou condutas que violem os valores da LOCAR com total sigilo e sem qualquer identificação.
+              </p>
+            </div>
+            <Link
+              to="/denuncia"
+              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-opacity hover:opacity-90"
+              style={{ background: "#034422" }}
+            >
+              <ShieldCheck className="w-4 h-4" />
+              Fazer Denúncia
+            </Link>
+          </div>
+        </div>
+
       </div>
     </div>
   );

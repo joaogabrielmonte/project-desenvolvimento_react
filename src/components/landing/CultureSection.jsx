@@ -1,3 +1,9 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 import React from "react";
 // 1. Adicionar ArrowRight para consistência com o botão do Hero
 import { Users, Shield, CheckCircle, Briefcase, ArrowRight } from "lucide-react";
