@@ -11,7 +11,6 @@ import Footer from "./Footer";
 import FiliaisSection from "../landing/FiliaisSection";
 import { Contact } from "lucide-react";
 import ContactSection from "../landing/ContactSection";
-import ChatBot from "../ChatBot";
 
 // Os dados que o Navbar precisa
 const sistemas = [
@@ -92,7 +91,6 @@ const Layout = () => {
      
 
       <Footer />
-      <ChatBot />
     </div>
   );
 };
