@@ -1,3 +1,9 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 import React, { useState } from "react";
 import {
   Recycle,
@@ -15,6 +21,7 @@ const services = [
   {
     icon: <Recycle />,
     title: "Coleta de Resíduos Sólidos",
+    image: "/images/servicos/coletaderesiduossolidos.png",
     description: `Coletar o lixo significa recolher o lixo acondicionado por quem o produz para encaminhá-lo, mediante transporte adequado, a uma estação de transferência, tratamento ou disposição final. O objetivo é evitar a proliferação de vetores causadores de doenças.`,
     features: [
       "Domiciliares", "Containerizada", "Comerciais", "Públicos", 
@@ -25,6 +32,7 @@ const services = [
   {
     icon: <Truck />,
     title: "Varrição de Vias",
+    image: "/images/servicos/varricaodevias.png",
     description: `Varrição ou varredura é a principal atividade de limpeza de logradouros públicos. Inclui remoção de areia, folhas, papéis e outros detritos, dependendo da arborização, trânsito de veículos e circulação de pedestres.`,
     features: [
       "Limpeza urbana", "Prevenção de acúmulo de lixo", "Segurança e higiene pública",
@@ -33,6 +41,7 @@ const services = [
   {
     icon: <Shield />,
     title: "Capinação e Pintura de Meio Fio",
+    image: "/images/servicos/capinaocaodevias.png",
     description: `Atividade essencial em ruas, passeios sem asfalto e margens de rios e canais. Realizamos capinação manual e pintura de meio-fio, garantindo a limpeza e a manutenção visual das vias urbanas.`,
     features: [
       "Capinação manual", "Pintura de meio-fio", "Limpeza de áreas externas",
@@ -41,6 +50,7 @@ const services = [
   {
     icon: <Leaf />,
     title: "Limpeza de Feiras e Praias",
+    image: "/images/servicos/limpezadefeiraseeventos.png",
     description: `Após o término das feiras, a retirada do lixo deve ser rápida para desobstruir o trânsito. A limpeza de praias pode ser manual ou mecânica, removendo resíduos de banhistas e detritos trazidos pela maré.`,
     features: [
       "Feiras livres", "Praias", "Horários programados", "Equipamentos manuais e mecânicos",
@@ -49,6 +59,7 @@ const services = [
   {
     icon: <Building2 />,
     title: "Unidade de Transferência de Resíduos",
+    image: "/images/servicos/aterrocandeias.png",
     description: `Unidade específica para descarrego temporário de resíduos, com desnível entre pavimentos, permitindo que caminhões façam a descarga diretamente em veículos de maior capacidade para otimizar o transporte.`,
     features: [
       "Descarrego eficiente", "Redução de transporte direto", "Organização logística",
@@ -57,12 +68,14 @@ const services = [
   {
     icon: <FileText />,
     title: "Operação de Aterro Sanitário",
+    image: "/images/servicos/aterrocomsul.png",
     description: `Gerenciamento completo do aterro sanitário, incluindo projeto, remediação, construção e operação, garantindo a destinação ambientalmente correta e segura dos resíduos sólidos.`,
     features: ["Projeto", "Remediação", "Construção e Operação"],
   },
   {
     icon: <Users />,
     title: "Projeto de Educação Ambiental",
+    image: "/images/servicos/educacaoambiental.png",
     description: `Trabalho de envolvimento, aprendizagem e mudança de comportamento da população através de cursos, debates e participação de profissionais experientes para promover a conscientização.`,
     features: [
       "Cursos educativos", "Debates", "Engajamento comunitário", "Mudança de comportamento",
@@ -115,24 +128,35 @@ const ServicosPage = () => {
 
           {/* Coluna 2: O conteúdo do serviço selecionado */}
           <div className="md:col-span-2 sticky top-28">
-            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-                <div className="flex items-center mb-4">
-                    <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center text-green-600">
-                    {React.cloneElement(activeService.icon, { className: 'w-8 h-8' })}
-                    </div>
-                    <h2 className="text-2xl font-bold text-gray-900 ml-4">{activeService.title}</h2>
-                </div>
-                <p className="text-gray-600 mb-6 leading-relaxed">{activeService.description}</p>
-                <div className="border-t border-gray-200 pt-4">
-                    <h3 className="text-md font-semibold text-gray-700 mb-3">Principais Atividades:</h3>
-                    <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
-                    {activeService.features.map((feature) => (
-                        <li key={feature} className="flex items-center text-sm text-gray-600">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                        {feature}
-                        </li>
-                    ))}
-                    </ul>
+            <div className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200">
+                {/* Imagem de destaque */}
+                {activeService.image && (
+                  <img
+                    key={activeService.image}
+                    src={activeService.image}
+                    alt={activeService.title}
+                    className="w-full h-52 object-cover"
+                  />
+                )}
+                <div className="p-8">
+                  <div className="flex items-center mb-4">
+                      <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center text-green-600">
+                      {React.cloneElement(activeService.icon, { className: 'w-8 h-8' })}
+                      </div>
+                      <h2 className="text-2xl font-bold text-gray-900 ml-4">{activeService.title}</h2>
+                  </div>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{activeService.description}</p>
+                  <div className="border-t border-gray-200 pt-4">
+                      <h3 className="text-md font-semibold text-gray-700 mb-3">Principais Atividades:</h3>
+                      <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
+                      {activeService.features.map((feature) => (
+                          <li key={feature} className="flex items-center text-sm text-gray-600">
+                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                          {feature}
+                          </li>
+                      ))}
+                      </ul>
+                  </div>
                 </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-# Logs
+# ── Logs ─────────────────────────────────────────────────
 logs
 *.log
 npm-debug.log*
@@ -7,18 +7,42 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# ── Dependências ──────────────────────────────────────────
 node_modules
+
+# ── Build (gerado pelo npm run build — não commitar) ──────
 dist
 dist-ssr
-*.local
 
-# Editor directories and files
+# ── Pacotes/artefatos locais de entrega ───────────────────
+*.zip
+*.7z
+*.tar
+*.gz
+
+# ── Variáveis de ambiente (chaves de API, URLs internas) ──
+.env
+.env.local
+.env.*.local
+.env.production
+
+# ── Cache e arquivos temporários ──────────────────────────
+*.local
+.cache
+.parcel-cache
+tmp/
+
+# ── Editores / IDEs ───────────────────────────────────────
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# ── Sistema operacional ───────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini

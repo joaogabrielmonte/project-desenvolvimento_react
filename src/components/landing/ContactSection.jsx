@@ -1,5 +1,12 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 import React, { useState, useEffect } from "react";
-import { Phone, Mail, MapPin, Send, CheckCircle, AlertTriangle } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Phone, Mail, MapPin, Send, CheckCircle, AlertTriangle, ShieldCheck, ArrowRight } from "lucide-react";
 
 // Componente para a mensagem flutuante (Toast)
 const Toast = ({ message, type, onclose }) => {
@@ -178,45 +185,103 @@ const ContactSection = () => {
               ></iframe>
             </div>
           </div>
-          {/* Fundo do formulário atualizado para um verde mais claro */}
-          <div className="bg-green-900/20 backdrop-blur-sm border border-green-700/30 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold mb-6">Solicite um Orçamento</h3>
-            <form onSubmit={handleSubmit} action="https://formspree.io/f/xovkrbwr" method="POST">
-              <div className="space-y-4">
-                {/* Campos do formulário com cores atualizadas */}
-                <div>
-                  <input type="text" name="name" placeholder="Nome completo" required value={formData.name} onChange={handleChange} className="w-full px-4 py-3 bg-green-900/30 border border-green-700/40 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500" />
-                  {formErrors.name && <p className="text-red-400 text-sm mt-1">{formErrors.name}</p>}
-                </div>
-                <div>
-                  <input type="email" name="email" placeholder="Seu melhor e-mail" required value={formData.email} onChange={handleChange} className="w-full px-4 py-3 bg-green-900/30 border border-green-700/40 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500" />
-                  {formErrors.email && <p className="text-red-400 text-sm mt-1">{formErrors.email}</p>}
-                </div>
-                <div>
-                  <input type="tel" name="phone" placeholder="(DD) 9XXXX-XXXX" required value={formData.phone} onChange={handlePhoneChange} className="w-full px-4 py-3 bg-green-900/30 border border-green-700/40 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500" />
-                  {formErrors.phone && <p className="text-red-400 text-sm mt-1">{formErrors.phone}</p>}
-                </div>
-                <div>
-                  <select name="service_type" required value={formData.service_type} onChange={handleChange} className="w-full px-4 py-3 bg-green-900/30 border border-green-700/40 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500">
-                    <option value="">Selecione o tipo de serviço...</option>
-                    <option value="Coleta Urbana">Coleta de Resíduos Urbanos</option>
-                    <option value="Gestao Industrial">Gestão de Resíduos Industriais</option>
-                    <option value="Orcamento">Solicitação de Orçamento</option>
-                    <option value="Outros">Outros Assuntos</option>
-                  </select>
-                  {formErrors.service_type && <p className="text-red-400 text-sm mt-1">{formErrors.service_type}</p>}
-                </div>
-                <div>
-                  <textarea name="message" placeholder="Descreva suas necessidades" rows={4} required value={formData.message} onChange={handleChange} className="w-full px-4 py-3 bg-green-900/30 border border-green-700/40 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500 resize-none" />
-                  {formErrors.message && <p className="text-red-400 text-sm mt-1">{formErrors.message}</p>}
-                </div>
-                {/* Botão de envio com gradiente de verde */}
-                <button type="submit" disabled={!isFormFilled || status.submitting} className="w-full flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:from-green-700 hover:to-green-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
-                  <Send className="w-5 h-5 mr-2" />
-                  {status.submitting ? 'Enviando...' : 'Enviar Solicitação'}
-                </button>
+          {/* Canais de atendimento em destaque */}
+          <div className="bg-green-900/20 backdrop-blur-sm border border-green-700/30 rounded-2xl p-8 flex flex-col gap-5">
+            <h3 className="text-2xl font-bold">Canais de Atendimento</h3>
+
+            {/* Telefone em destaque */}
+            <div className="bg-green-500/10 border border-green-500/30 rounded-2xl p-6 text-center">
+              <p className="text-green-400 text-xs font-semibold uppercase tracking-widest mb-2">Central de Atendimento</p>
+              <a
+                href="tel:8121272525"
+                className="text-4xl font-extrabold text-white tracking-tight hover:text-green-300 transition-colors block"
+              >
+                81 2127.2525
+              </a>
+              <p className="text-gray-400 text-xs mt-2">Segunda a Sexta, 8h às 18h</p>
+            </div>
+
+            {/* E-mail */}
+            <a
+              href="mailto:atendimento@locar.srv.br"
+              className="flex items-center gap-4 bg-green-900/30 rounded-xl p-4 hover:bg-green-900/50 transition-colors group"
+            >
+              <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                <Mail className="w-5 h-5 text-green-400" />
               </div>
-            </form>
+              <div>
+                <p className="text-xs text-gray-400 uppercase tracking-wide mb-0.5">E-mail</p>
+                <p className="text-white font-semibold group-hover:text-green-300 transition-colors text-sm">
+                  atendimento@locar.srv.br
+                </p>
+              </div>
+            </a>
+
+            {/* Ouvidoria */}
+            <div className="flex items-center gap-4 bg-green-900/30 rounded-xl p-4">
+              <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                <ShieldCheck className="w-5 h-5 text-green-400" />
+              </div>
+              <div>
+                <p className="text-xs text-gray-400 uppercase tracking-wide mb-0.5">Canal de Ouvidoria</p>
+                <p className="text-white font-semibold text-sm">Críticas, sugestões e denúncias</p>
+                <p className="text-gray-400 text-xs mt-0.5">Acesso online, confidencial e seguro</p>
+              </div>
+            </div>
+
+            {/* Canal denúncia anônima */}
+            <div className="flex items-center gap-4 bg-green-900/30 rounded-xl p-4">
+              <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                <ArrowRight className="w-5 h-5 text-green-400" />
+              </div>
+              <div>
+                <p className="text-xs text-gray-400 uppercase tracking-wide mb-0.5">Canal de Denúncia Anônima</p>
+                <p className="text-white font-semibold text-sm">Sem identificação, 100% sigiloso</p>
+                <p className="text-gray-400 text-xs mt-0.5">Ética e transparência garantidas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Banner Ouvidoria */}
+        <div className="mt-16 relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#022c16] to-[#034422] border border-green-700/40 p-8 md:p-10">
+          <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-green-500/10" />
+          <div className="absolute -right-4 -bottom-10 w-32 h-32 rounded-full bg-green-400/10" />
+          <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
+            {/* Ícone ouvidoria */}
+            <div className="flex-shrink-0 bg-green-500/20 rounded-2xl p-4">
+              <ShieldCheck className="w-10 h-10 text-green-400" />
+            </div>
+            <div className="text-center md:text-left flex-1">
+              <h3 className="text-2xl font-bold text-white mb-1">Canal de Ouvidoria</h3>
+              <p className="text-green-200/80 text-sm">
+                Críticas, sugestões ou denúncias? Fale conosco de forma segura e confidencial.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center gap-3 flex-shrink-0">
+              <div className="flex flex-col gap-2">
+                <a
+                  href="tel:08000020202"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-400 text-[#022c16] font-bold rounded-xl hover:bg-green-300 transition-colors whitespace-nowrap text-sm"
+                >
+                  <Phone className="w-4 h-4" />
+                  0800 002 0202
+                </a>
+                <a
+                  href="tel:8121272525"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors whitespace-nowrap text-sm"
+                >
+                  <Phone className="w-4 h-4 text-green-400" />
+                  81 2127.2525
+                </a>
+              </div>
+              <Link
+                to="/ouvidoria"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors whitespace-nowrap"
+              >
+                Acessar Ouvidoria
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

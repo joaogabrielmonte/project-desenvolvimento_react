@@ -1,6 +1,13 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 // src/components/landing/Footer.jsx
 import React from "react";
-import { LogIn, Briefcase, MapPin, Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
+import { LogIn, Briefcase, MapPin, Phone, Mail, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -45,11 +52,13 @@ const Footer = () => {
 
             {/* Logos integradas ao corpo do footer */}
             <div className="flex items-center gap-6 mt-6">
-              <img
-                src="/images/ouvidoria-01.png"
-                alt="Ouvidoria"
-                className="h-8 w-auto"
-              />
+              <Link to="/ouvidoria" title="Acessar Canal de Ouvidoria">
+                <img
+                  src="/images/ouvidoria-01.png"
+                  alt="Ouvidoria"
+                  className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity"
+                />
+              </Link>
               <div className="flex items-center gap-2">
                 <img
                   src="/images/bndes.png"
@@ -57,6 +66,49 @@ const Footer = () => {
                   className="h-6 w-auto"
                 />
                 <span className="text-gray-400 text-xs uppercase">Financiamento</span>
+              </div>
+            </div>
+
+            {/* Redes Sociais */}
+            <div className="mt-6">
+              <p className="text-sm font-semibold text-gray-300 mb-3">Siga-nos</p>
+              <div className="flex flex-col gap-3">
+                {/* Instagram Locar */}
+                <a
+                  href="https://www.instagram.com/locargestaoderesiduos/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-gray-400 hover:text-pink-400 transition-colors text-sm group"
+                >
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-800 group-hover:bg-pink-500/20 transition-colors">
+                    <Instagram className="w-4 h-4" />
+                  </div>
+                  <span>@locargestaoderesiduos</span>
+                </a>
+                {/* Instagram I9 */}
+                <a
+                  href="https://www.instagram.com/i9gestaoderesiduos/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-gray-400 hover:text-pink-400 transition-colors text-sm group"
+                >
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-800 group-hover:bg-pink-500/20 transition-colors">
+                    <Instagram className="w-4 h-4" />
+                  </div>
+                  <span>@i9gestaoderesiduos</span>
+                </a>
+                {/* LinkedIn — adicionar URL quando disponível */}
+                <a
+                  href="https://www.linkedin.com/company/locar-gestao-de-residuos/posts/?feedView=all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors text-sm group"
+                >
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-800 group-hover:bg-blue-500/20 transition-colors">
+                    <Linkedin className="w-4 h-4" />
+                  </div>
+                  <span>Locar no LinkedIn</span>
+                </a>
               </div>
             </div>
           </div>

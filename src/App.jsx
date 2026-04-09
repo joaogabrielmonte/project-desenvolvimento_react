@@ -1,3 +1,9 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -12,6 +18,8 @@ import PessoasCulturaPage from "./pages/PessoasCulturaPage";
 import ContatoPage from "./pages/ContatoPage";
 import FiliaisPage from "./pages/FiliaisPage";
 import SistemasPage from "./pages/SistemasPage";
+import OuvidoriaPage from "./pages/OuvidoriaPage";
+import DenunciaPage from "./pages/DenunciaPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
@@ -30,7 +38,9 @@ function App() {
           <Route path="pessoas-cultura" element={<PessoasCulturaPage />} />
           <Route path="contato" element={<ContatoPage />} />
           <Route path="filiais" element={<FiliaisPage />} />
-          <Route path="sistemas" element={<SistemasPage />} />  
+          <Route path="sistemas" element={<SistemasPage />} />
+          <Route path="ouvidoria" element={<OuvidoriaPage />} />
+          <Route path="denuncia" element={<DenunciaPage />} />
 
         </Route> {/* Fim da rota "pai" */}
 

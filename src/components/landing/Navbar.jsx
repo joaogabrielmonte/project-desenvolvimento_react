@@ -1,3 +1,9 @@
+﻿/**
+ * @author     Joao Gabriel
+ * @enterprise Execut Tecnologia
+ * @initiated  21/10/2025
+ * @version    2.0 (30/03/2026)
+ */
 import React from "react";
 import {
   ChevronDown,
@@ -28,14 +34,12 @@ const Navbar = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="flex items-center space-x-4">
-            <div className="w-16.5 h-16.5 flex items-center justify-center">
-              <img
-                src="/images/locar.png"
-                alt="Logo Locar"
-                className="w-20 h-20 md:w-20 md:h-20 object-contain"
-              />{" "}
-            </div>
+          <div className="flex items-center">
+            <img
+              src="/images/grupolocar.png"
+              alt="Grupo Locar"
+              className="h-12 w-auto object-contain"
+            />
           </div>
 
           {/* Desktop Menu */}
