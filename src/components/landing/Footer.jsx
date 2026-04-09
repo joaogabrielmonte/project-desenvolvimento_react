@@ -50,7 +50,7 @@ const Footer = () => {
               <li>
                 <button
                   onClick={() =>
-                    window.open("https://sistema.locar.srv.br", "_blank")
+                    window.open("/sistemas", "_blank")
                   }
                   className="text-gray-400 hover:text-green-400 transition-colors flex items-center"
                 >

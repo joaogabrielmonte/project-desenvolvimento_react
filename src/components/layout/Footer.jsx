@@ -7,7 +7,7 @@
 // src/components/landing/Footer.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import { LogIn, Briefcase, MapPin, Phone, Mail, Instagram, Linkedin } from "lucide-react";
+import { LogIn, Briefcase, MapPin, Phone, Mail, Instagram, Linkedin, Newspaper } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -139,15 +139,22 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Acesso Rápido</h4>
             <ul className="space-y-2">
               <li>
-                <button
-                  onClick={() =>
-                    window.open("https://sistema.locar.srv.br", "_blank")
-                  }
+                <Link
+                  to="/sistemas"
                   className="text-gray-400 hover:text-green-400 transition-colors flex items-center"
                 >
                   <LogIn className="w-4 h-4 mr-2" />
                   Sistema de Acesso
-                </button>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/comunicados"
+                  className="text-gray-400 hover:text-green-400 transition-colors flex items-center"
+                >
+                  <Newspaper className="w-4 h-4 mr-2" />
+                  Comunicados
+                </Link>
               </li>
               <li>
                 <button

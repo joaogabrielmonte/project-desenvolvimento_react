@@ -7,7 +7,7 @@
 // src/components/MapaBrasil.jsx
 import { useState, useEffect } from "react";
 
-const HIGHLIGHTED = ["BRPE", "BRSP" /*"BRMT"*/,"BRRJ" , "BRBA", "BRRS"];
+const HIGHLIGHTED = ["BRPE", "BRSP", "BRMT", "BRBA", "BRRS"];
 
 const stateMarkers = [
   {
@@ -18,8 +18,8 @@ const stateMarkers = [
     id: "SP", label: "São Paulo", x: 56.0, y: 68.5,
     cities: ["São Paulo Capital (Consórcio LOCAT)"],
   },
-  // { id: "MT", label: "Mato Grosso", x: 33.0, y: 43.0, cities: [] },
-  { id: "RJ", label: "Rio de Janeiro", x: 64.5, y: 64.0, cities: ["Rio de Janeiro"] },
+  { id: "MT", label: "Mato Grosso", x: 33.0, y: 43.0, cities: ["Cuiabá"] },
+  // { id: "RJ", label: "Rio de Janeiro", x: 64.5, y: 64.0, cities: ["Rio de Janeiro"] },
   { id: "BA", label: "Bahia", x: 63.5, y: 46.0, cities: ["Jequié"] },
   { id: "RS", label: "Rio Grande do Sul", x: 48.5, y: 82.0, cities: ["Canela", "Novo Hamburgo"] },
 ];

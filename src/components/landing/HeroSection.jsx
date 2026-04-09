@@ -4,12 +4,18 @@
  * @initiated  21/10/2025
  * @version    2.0 (30/03/2026)
  */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
 const HeroSection = ({ scrollToSection }) => {
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <section
@@ -27,8 +33,8 @@ const HeroSection = ({ scrollToSection }) => {
         className="absolute inset-0 w-full h-full object-cover object-center"
         style={{
           opacity: imgLoaded ? 1 : 0,
-          transform: imgLoaded ? "scale(1) translateZ(0)" : "scale(1.06) translateZ(0)",
-          transition: "opacity 1.1s cubic-bezier(0.22,1,0.36,1), transform 1.4s cubic-bezier(0.22,1,0.36,1)",
+          transform: imgLoaded ? "scale(1) translateZ(0)" : "scale(1.04) translateZ(0)",
+          transition: "opacity 0.85s ease-out, transform 1.1s ease-out",
           willChange: "opacity, transform",
         }}
         aria-hidden="true"
@@ -57,9 +63,9 @@ const HeroSection = ({ scrollToSection }) => {
 
         {/* Título */}
         <motion.h1
-          initial={{ opacity: 0, y: 28 }}
-          animate={imgLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
-          transition={{ delay: 0.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="font-black uppercase tracking-tight leading-[0.98] mb-7 text-white"
           style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)", letterSpacing: "-0.01em" }}
         >
@@ -71,8 +77,8 @@ const HeroSection = ({ scrollToSection }) => {
         {/* Subtítulo */}
         <motion.p
           initial={{ opacity: 0, y: 14 }}
-          animate={imgLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-          transition={{ delay: 0.8, duration: 0.65 }}
+          animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+          transition={{ delay: 0.35, duration: 0.6 }}
           className="text-white/55 text-base sm:text-lg leading-relaxed max-w-md mb-10 font-light"
         >
           Uma empresa familiar que respeita o meio ambiente e as futuras
@@ -83,8 +89,8 @@ const HeroSection = ({ scrollToSection }) => {
         {/* Botões */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
-          animate={imgLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-          transition={{ delay: 1.0, duration: 0.55 }}
+          animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+          transition={{ delay: 0.55, duration: 0.5 }}
           className="flex items-center gap-6 flex-wrap"
         >
           <button
@@ -107,8 +113,8 @@ const HeroSection = ({ scrollToSection }) => {
       <motion.button
         onClick={() => scrollToSection("grupo")}
         initial={{ opacity: 0 }}
-        animate={imgLoaded ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ delay: 1.6, duration: 0.6 }}
+        animate={mounted ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
         aria-label="Rolar para baixo"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer group"
       >

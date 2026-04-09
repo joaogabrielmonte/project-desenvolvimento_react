@@ -30,7 +30,7 @@ const sistemas = [
   {
     name: "Microsoft 365",
     url: "https://m365.cloud.microsoft/",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Microsoft_Office_logo_%282019%E2%80%93present%29.svg/640px-Microsoft_Office_logo_%282019%E2%80%93present%29.svg.png",
+    image: "/images/sistemas/microsoft-365.png",
     desc: "E-mail, Teams, Word, Excel e demais ferramentas Microsoft.",
   },
 ];

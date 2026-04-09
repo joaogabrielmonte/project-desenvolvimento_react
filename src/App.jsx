@@ -21,6 +21,7 @@ import SistemasPage from "./pages/SistemasPage";
 import OuvidoriaPage from "./pages/OuvidoriaPage";
 import DenunciaPage from "./pages/DenunciaPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import PoliticaPrivacidadePage from "./pages/PoliticaPrivacidadePage";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="sistemas" element={<SistemasPage />} />
           <Route path="ouvidoria" element={<OuvidoriaPage />} />
           <Route path="denuncia" element={<DenunciaPage />} />
+          <Route path="politica-privacidade" element={<PoliticaPrivacidadePage />} />
 
         </Route> {/* Fim da rota "pai" */}
 

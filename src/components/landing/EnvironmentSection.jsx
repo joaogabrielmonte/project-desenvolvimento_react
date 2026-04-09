@@ -4,17 +4,34 @@
  * @initiated  21/10/2025
  * @version    2.0 (30/03/2026)
  */
-import React from "react";
-import { Award, Briefcase, CheckCircle, Clock } from "lucide-react";
+import React, { useState, useEffect, useCallback } from "react";
+import { Award, Briefcase, CheckCircle, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+
+const carouselImages = [
+  { src: "/images/caminhoeslocar.jpeg", alt: "Frota Locar" },
+  { src: "/images/ambiental-secundaria.jpg", alt: "Educação Ambiental" },
+  { src: "/images/lixeiraslocar.jpg", alt: "Gestão de Resíduos" },
+  { src: "/images/coletalocar.jpg", alt: "Coleta Sustentável" },
+];
 
 const EnvironmentSection = () => {
+  const [current, setCurrent] = useState(0);
+
+  const next = useCallback(() => setCurrent((c) => (c + 1) % carouselImages.length), []);
+  const prev = () => setCurrent((c) => (c - 1 + carouselImages.length) % carouselImages.length);
+
+  useEffect(() => {
+    const timer = setInterval(next, 4000);
+    return () => clearInterval(timer);
+  }, [next]);
+
   return (
     <section
       id="meio-ambiente"
       className="py-20 bg-gradient-to-br from-[#034422] to-[#081c30] text-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Texto (Esquerda) + Imagens (Direita) */}
+        {/* Texto (Esquerda) + Carrossel (Direita) */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Texto */}
           <div>
@@ -34,34 +51,57 @@ const EnvironmentSection = () => {
             </p>
           </div>
 
-          {/* Imagens */}
-          <div className="relative flex flex-col items-center md:block h-auto md:h-96">
-            {/* Imagem principal */}
-            <img
-              src="/images/ambiental-principal.jpg"
-              alt="Operação de Aterro Sanitário"
-              className="w-80 sm:w-96 md:w-full h-64 sm:h-72 md:h-full object-cover rounded-2xl shadow-2xl"
-            />
+          {/* Carrossel */}
+          <div className="relative h-80 md:h-[480px] rounded-2xl overflow-hidden shadow-2xl select-none will-change-transform">
+            {carouselImages.map((img, i) => (
+              <img
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+                style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
+                  i === current ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
 
-            {/* Imagem secundária */}
-            <img
-              src="/images/ambiental-secundaria.jpg"
-              alt="Projeto de Educação Ambiental"
-              className="
-              w-44 h-44 sm:w-48 sm:h-48 object-cover rounded-xl shadow-lg border-4 border-gray-800
-              mt-6
-              md:mt-0
-              md:absolute md:-bottom-8 md:-right-8
-              md:transform-none
-              mx-auto md:mx-0
-              relative left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0
-            "
-            />
+            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent" />
+
+            <button
+              onClick={prev}
+              aria-label="Anterior"
+              className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 transition-colors z-10"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <button
+              onClick={next}
+              aria-label="Próximo"
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 transition-colors z-10"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              {carouselImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  aria-label={`Ir para imagem ${i + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    i === current ? "bg-white w-6" : "bg-white/50 w-2"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="mt-28 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="mt-16 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center p-6 bg-white/5 rounded-lg backdrop-blur-sm">
             <Award className="w-10 h-10 text-green-300 mx-auto mb-4" />
             <div className="text-4xl font-bold text-white mb-2">35</div>

@@ -4,11 +4,15 @@
  * @initiated  21/10/2025
  * @version    2.0 (30/03/2026)
  */
-import React from "react";
-// 1. Adicionar ArrowRight para consistência com o botão do Hero
-import { Users, Shield, CheckCircle, Briefcase, ArrowRight } from "lucide-react";
+import React, { useState, useEffect, useCallback } from "react";
+import { Users, Shield, CheckCircle, Briefcase, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
-// 2. Mover os 3 pontos para um array de dados, para facilitar a listagem
+const carouselImages = [
+  { src: "/images/equipe-locar.jpg", alt: "Nossa Equipe Locar" },
+  { src: "/images/garanhunsagentes.jpg", alt: "Agentes Locar em Garanhuns" },
+  { src: "/images/agentedecoletalocar.jpg", alt: "Agente de Coleta Locar" },
+];
+
 const values = [
   {
     icon: <Users className="w-8 h-8 text-green-600" />,
@@ -28,29 +32,73 @@ const values = [
 ];
 
 const CultureSection = () => {
+  const [current, setCurrent] = useState(0);
+
+  const next = useCallback(() => setCurrent((c) => (c + 1) % carouselImages.length), []);
+  const prev = () => setCurrent((c) => (c - 1 + carouselImages.length) % carouselImages.length);
+
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next]);
+
   return (
-    // Fundo cinza claro para contrastar com a seção escura anterior
     <section id="carreiras" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* 3. NOVO LAYOUT DE 2 COLUNAS */}
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
-          {/* Coluna 1: Imagem (Substitua pela sua) */}
-          <div className="w-full">
-            <img
-              // !! IMPORTANTE: Substitua por uma foto real da sua equipe ou operação !!
-              src="/images/equipe-locar.jpg" 
-              alt="Nossa Equipe Locar"
-              className="w-full h-96 md:h-[500px] object-cover rounded-2xl shadow-xl"
-            />
+
+          {/* Carrossel */}
+          <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden shadow-xl select-none will-change-transform">
+            {carouselImages.map((img, i) => (
+              <img
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+                style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
+                  i === current ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
+
+            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 to-transparent" />
+
+            <button
+              onClick={prev}
+              aria-label="Anterior"
+              className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 transition-colors z-10"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <button
+              onClick={next}
+              aria-label="Próximo"
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 transition-colors z-10"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              {carouselImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  aria-label={`Ir para imagem ${i + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    i === current ? "bg-white w-6" : "bg-white/50 w-2"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Coluna 2: Conteúdo */}
+          {/* Conteúdo */}
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Faça Parte do Nosso{" "}
-              {/* 4. Voltamos para a cor verde principal, para consistência */}
               <span style={{ color: "#038242" }}>Time</span>
             </h2>
             <p className="text-xl text-gray-600 mb-10 leading-relaxed">
@@ -59,7 +107,6 @@ const CultureSection = () => {
               qualificação contínua.
             </p>
 
-            {/* 5. A LISTA DE VALORES (Substitui os 3 cards) */}
             <ul className="space-y-6 mb-10">
               {values.map((item) => (
                 <li key={item.title} className="flex items-start">
@@ -76,7 +123,6 @@ const CultureSection = () => {
               ))}
             </ul>
 
-            {/* 6. Botão CTA (Call to Action) */}
             <button
               onClick={() =>
                 window.open(
@@ -84,7 +130,6 @@ const CultureSection = () => {
                   "_blank"
                 )
               }
-              // Botão mais alinhado com o do Hero
               className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:from-green-700 hover:to-green-800 transition-all shadow-lg"
             >
               <Briefcase className="w-5 h-5 mr-2" />

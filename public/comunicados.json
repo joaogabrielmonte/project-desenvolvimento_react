@@ -1,23 +1,9 @@
 [
   {
     "id": 1,
-    "titulo": "Política Ambiental 2025",
-    "descricao": "Atualização da política ambiental com foco em sustentabilidade.",
-    "arquivo": "/comunicados/comunicado1.pdf",
-    "data": "2025-09-01"
-  },
-  {
-    "id": 2,
-    "titulo": "Manual de Boas Práticas",
-    "descricao": "Guia atualizado de boas práticas internas.",
-    "arquivo": "/comunicados/comunicado2.pdf",
-    "data": "2025-08-28"
-  },
-  {
-    "id": 3,
-    "titulo": "Manual de Como USAR o Comunicado",
-    "descricao": "Guia atualizado de como usar o Comunicados internos.",
+    "titulo": "Comunicado de Teste",
+    "descricao": "Este é um comunicado de teste para validar a exibição da página.",
     "arquivo": "/comunicados/comunicado.pdf",
-    "data": "2025-08-28"
+    "data": "2026-04-09"
   }
 ]
