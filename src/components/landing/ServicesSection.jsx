@@ -21,7 +21,7 @@ const services = [
   {
     icon: <Recycle className="w-6 h-6" />,
     title: "Coleta de Resíduos Sólidos",
-    image: "/images/servicos/coletaderesiduossolidos.png",
+    image: "/images/servicos/coletaderesiduo.jpg",
     description: `Coletar o lixo significa recolher o lixo acondicionado por quem o produz para encaminhá-lo, mediante transporte adequado, a uma estação de transferência, tratamento ou disposição final. O objetivo é evitar a proliferação de vetores causadores de doenças, como ratos, baratas e moscas.`,
     features: [
       "Domiciliares", "Containerizada", "Comerciais", "Públicos",
@@ -32,7 +32,7 @@ const services = [
   {
     icon: <Truck className="w-6 h-6" />,
     title: "Varrição de Vias",
-    image: "/images/servicos/varricaodevias.png",
+    image: "/images/servicos/varricaodevia.jpg",
     description: `Varrição ou varredura é a principal atividade de limpeza de logradouros públicos. Inclui remoção de areia, folhas, papéis, pontas de cigarro, dependendo da arborização, trânsito de veículos, estado do calçamento e circulação de pedestres.`,
     features: [
       "Limpeza urbana", "Prevenção de acúmulo de lixo", "Segurança e higiene pública",
@@ -50,7 +50,7 @@ const services = [
   {
     icon: <Leaf className="w-6 h-6" />,
     title: "Limpeza de Feiras e Praias",
-    image: "/images/servicos/limpezadefeiraseeventos.png",
+    image: "/images/servicos/limpezapraia.jpg",
     description: `Após o término das feiras, a retirada do lixo deve ser rápida para desobstruir o trânsito e evitar fermentação da matéria orgânica. A limpeza de praias pode ser manual ou mecânica, removendo resíduos de banhistas e detritos trazidos pela maré.`,
     features: [
       "Feiras livres", "Praias", "Horários programados", "Equipamentos manuais e mecânicos",
