@@ -30,40 +30,75 @@ const groupCompanies = [
     logo: "/images/logo-i9.png",
     color: "#182d70", // Azul da I9
   },
-   {
+  {
     name: "I9 Jequié",
     sector: "Resíduos Municipal",
     logo: "/images/i9-jequie.png",
     color: "#182d70",
-    description: "A I9 Jequié é a empresa responsável pela concessão dos resíduos sólidos da cidade de Jequié/BA, oferecendo soluções eficientes e sustentáveis para a gestão dos resíduos municipais.",
-  }
+    description:
+      "A I9 Jequié é a empresa responsável pela concessão dos resíduos sólidos da cidade de Jequié/BA, oferecendo soluções eficientes e sustentáveis para a gestão dos resíduos municipais.",
+  },
 ];
 
 const STATE_DATA = [
   {
-    sigla: "PE", nome: "Pernambuco", cor: "#034422", text: "white",
-    cities: ["Jaboatão dos Guararapes", "Cabo de Santo Agostinho", "Caruaru", "Garanhuns", "Vitória de Santo Antão", "Pesqueira", "Olinda", "Paulista"],
+    sigla: "PE",
+    nome: "Pernambuco",
+    cor: "#034422",
+    text: "white",
+    cities: [
+      "Jaboatão dos Guararapes",
+      "Cabo de Santo Agostinho",
+      "Caruaru",
+      "Garanhuns",
+      "Vitória de Santo Antão",
+      "Pesqueira",
+      "Olinda",
+      "Paulista",
+    ],
   },
   {
-    sigla: "SP", nome: "São Paulo", cor: "#034422", text: "white",
+    sigla: "SP",
+    nome: "São Paulo",
+    cor: "#034422",
+    text: "white",
     cities: ["São Paulo Capital (Consórcio LOCAT)"],
   },
   {
-    sigla: "BA", nome: "Bahia", cor: "#034422", text: "white",
+    sigla: "BA",
+    nome: "Bahia",
+    cor: "#034422",
+    text: "white",
     cities: ["Jequié"],
   },
   {
-    sigla: "RS", nome: "Rio Grande do Sul", cor: "#034422", text: "white",
+    sigla: "RS",
+    nome: "Rio Grande do Sul",
+    cor: "#034422",
+    text: "white",
     cities: ["Canela", "Novo Hamburgo"],
   },
-  { sigla: "RJ", nome: "Rio de Janeiro", cor: "#034422", text: "white", cities: ["Rio de Janeiro"] },
-  { sigla: "BO", nome: "Bolívia", cor: "#c3cd86", text: "#034422", cities: ["Santa Cruz de la Sierra"] },
+  {
+    sigla: "RJ",
+    nome: "Rio de Janeiro",
+    cor: "#034422",
+    text: "white",
+    cities: ["Rio de Janeiro"],
+  },
+  {
+    sigla: "BO",
+    nome: "Bolívia",
+    cor: "#c3cd86",
+    text: "#034422",
+    cities: ["Santa Cruz de la Sierra"],
+  },
 ];
 
 function StateList() {
   const [openSigla, setOpenSigla] = useState(null);
 
-  const toggle = (sigla) => setOpenSigla((prev) => (prev === sigla ? null : sigla));
+  const toggle = (sigla) =>
+    setOpenSigla((prev) => (prev === sigla ? null : sigla));
 
   return (
     <div className="w-full md:w-2/5 space-y-2">
@@ -71,7 +106,10 @@ function StateList() {
         const isOpen = openSigla === sigla;
         const hasCities = cities && cities.length > 0;
         return (
-          <div key={sigla} className="rounded-xl overflow-hidden shadow-sm border border-gray-100">
+          <div
+            key={sigla}
+            className="rounded-xl overflow-hidden shadow-sm border border-gray-100"
+          >
             <button
               onClick={() => hasCities && toggle(sigla)}
               className="w-full flex items-center gap-4 bg-white px-5 py-3 transition-colors"
@@ -83,7 +121,9 @@ function StateList() {
               >
                 {sigla}
               </div>
-              <span className="flex-1 text-left text-gray-700 font-medium text-base">{nome}</span>
+              <span className="flex-1 text-left text-gray-700 font-medium text-base">
+                {nome}
+              </span>
               {hasCities && (
                 <ChevronDown
                   className="w-4 h-4 flex-shrink-0 transition-transform duration-300"
@@ -107,8 +147,14 @@ function StateList() {
               >
                 <ul className="px-5 py-2 space-y-1">
                   {cities.map((city) => (
-                    <li key={city} className="flex items-center gap-2 text-sm text-gray-600 py-1">
-                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#038242" }} />
+                    <li
+                      key={city}
+                      className="flex items-center gap-2 text-sm text-gray-600 py-1"
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ background: "#038242" }}
+                      />
                       {city}
                     </li>
                   ))}
@@ -408,7 +454,6 @@ const GrupoPage = () => {
                 />
               </div>
             </div>
-            
 
             {/* ── Top Right — verde claro ── */}
             <div className="flex items-center justify-center md:justify-start md:pl-10">
@@ -539,8 +584,6 @@ const GrupoPage = () => {
                 />
               </div>
             </div>
-
-            
           </div>
         </div>
       </div>
@@ -550,8 +593,7 @@ const GrupoPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Nossa Presença{" "}
-              <span style={{ color: "#038242" }}>Nacional</span>
+              Nossa Presença <span style={{ color: "#038242" }}>Nacional</span>
             </h2>
             <p className="text-gray-500 mt-3 text-base max-w-xl mx-auto">
               Atuamos em municípios de todo o Brasil com equipes e estrutura
@@ -572,7 +614,6 @@ const GrupoPage = () => {
       <div className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
-
             {/* Coluna esquerda — Texto */}
             <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -584,9 +625,13 @@ const GrupoPage = () => {
 
               <div className="text-gray-600 space-y-4 leading-relaxed">
                 <p>
-                  Na LOCAR, ter <span className="font-semibold" style={{ color: "#038242" }}>sangue verde</span> é mais do que vestir um uniforme,
-                  é carregar no coração o compromisso com a sustentabilidade,
-                  a excelência e o respeito às comunidades.
+                  Na LOCAR, ter{" "}
+                  <span className="font-semibold" style={{ color: "#038242" }}>
+                    sangue verde
+                  </span>{" "}
+                  é mais do que vestir um uniforme, é carregar no coração o
+                  compromisso com a sustentabilidade, a excelência e o respeito
+                  às comunidades.
                 </p>
                 <p>
                   Esse conceito representa nossa cultura organizacional,
@@ -596,74 +641,104 @@ const GrupoPage = () => {
                 </p>
               </div>
 
-              <p className="mt-6 font-semibold text-base" style={{ color: "#038242" }}>
+              <p
+                className="mt-6 font-semibold text-base"
+                style={{ color: "#038242" }}
+              >
                 Sangue verde é a essência da LOCAR.
               </p>
 
-              <img
+              {/* <img
                 src="/images/planta_locar.png"
                 alt="Planta Locar"
                 className="mt-8 max-w-[180px] object-contain"
-              />
+              /> */}
             </div>
 
             {/* Coluna direita — Missão, Visão, Valores */}
             <div className="space-y-6">
-
               {/* Missão */}
               <div>
-                <p className="text-xl font-bold mb-3" style={{ color: "#038242" }}>Missão</p>
+                <p
+                  className="text-xl font-bold mb-3"
+                  style={{ color: "#038242" }}
+                >
+                  Nossa Missão
+                </p>
                 <div
                   className="flex items-start gap-4 rounded-2xl p-5 shadow-md"
                   style={{ background: "#034422" }}
                 >
-                  <Rocket className="w-8 h-8 flex-shrink-0 mt-0.5" style={{ color: "#c3cd86" }} />
+                  <Rocket
+                    className="w-8 h-8 flex-shrink-0 mt-0.5"
+                    style={{ color: "#c3cd86" }}
+                  />
                   <p className="text-white text-sm leading-relaxed">
-                    Oferecer soluções de gestão de resíduos a clientes públicos e
-                    privados com eficiência e inovação, através da valorização das
-                    pessoas e do resultado econômico, melhorando a qualidade de
-                    vida da população, respeitando valores éticos e a sustentabilidade
-                    socioambiental.
+                    Promover a gestão ambiental responsável e inovadora,
+                    oferecendo serviços de qualidade em gestão de resíduos e
+                    engenharia, para garantir um futuro mais limpo e sustentável
+                    mantendo o compromisso como meio ambiente e respeitando as
+                    futuras gerações.
                   </p>
                 </div>
               </div>
 
               {/* Visão */}
               <div>
-                <p className="text-xl font-bold mb-3" style={{ color: "#038242" }}>Visão</p>
+                <p
+                  className="text-xl font-bold mb-3"
+                  style={{ color: "#038242" }}
+                >
+                  Nossa Visão
+                </p>
                 <div
                   className="flex items-start gap-4 rounded-2xl p-5 shadow-md"
                   style={{ background: "#034422" }}
                 >
-                  <Eye className="w-8 h-8 flex-shrink-0 mt-0.5" style={{ color: "#c3cd86" }} />
+                  <Eye
+                    className="w-8 h-8 flex-shrink-0 mt-0.5"
+                    style={{ color: "#c3cd86" }}
+                  />
                   <p className="text-white text-sm leading-relaxed">
-                    Ser precursora de novas tecnologias e referência na gestão de
-                    resíduos em 05 anos.
+                    Alcançar a excelência em serviços ambientais promovendo a
+                    sustentabilidade, e a inovação como pilares para o
+                    desenvolvimento de comunidades e cidades sustentáveis, nos
+                    próximos 10 anos, expandindo nossa atuação para novas áreas
+                    e mercados na America Latina.
                   </p>
                 </div>
               </div>
 
               {/* Valores */}
               <div>
-                <p className="text-xl font-bold mb-3" style={{ color: "#038242" }}>Valores</p>
+                <p
+                  className="text-xl font-bold mb-3"
+                  style={{ color: "#038242" }}
+                >
+                  Nossos Valores
+                </p>
                 <div
                   className="flex items-start gap-4 rounded-2xl p-5 shadow-md"
                   style={{ background: "#034422" }}
                 >
-                  <Leaf className="w-8 h-8 flex-shrink-0 mt-0.5" style={{ color: "#c3cd86" }} />
+                  <Leaf
+                    className="w-8 h-8 flex-shrink-0 mt-0.5"
+                    style={{ color: "#c3cd86" }}
+                  />
                   <p className="text-white text-sm leading-relaxed">
-                    Responsabilidade social e ambiental, respeito às comunidades
-                    circunvizinhas, desenvolvimento de projetos socioculturais,
-                    respeito ao meio ambiente.
+                    Confiança : Agimos com honestidade, ética, integridade,
+                    lealdade e respeito. Foco em Resultados: Alinhamos nosso
+                    trabalho ao planejamento estratégico, buscando a eficiência
+                    e a excelência. Ser o Melhor na Nossa Atividade: Buscamos
+                    ser 1% melhores a cada dia, com autonomia, proatividade e
+                    desenvolvimento contínuo.
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
-
     </div>
   );
 };
