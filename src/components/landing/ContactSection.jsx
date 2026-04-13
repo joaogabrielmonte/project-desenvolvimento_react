@@ -235,7 +235,7 @@ const ContactSection = () => {
                 <ArrowRight className="w-5 h-5 text-green-400" />
               </div>
               <div>
-                <p className="text-xs text-gray-400 uppercase tracking-wide mb-0.5">Canal de Denúncia Anônima</p>
+                <p className="text-xs text-gray-400 uppercase tracking-wide mb-0.5">Canal de Ouvidoria Interna</p>
                 <p className="text-white font-semibold text-sm">Sem identificação, 100% sigiloso</p>
                 <p className="text-gray-400 text-xs mt-0.5">Ética e transparência garantidas</p>
               </div>

@@ -74,7 +74,7 @@ const PessoasCulturaPage = () => {
 
         </div>
 
-        {/* ── Card Canal de Denúncia Anônima ── */}
+        {/* ── Card Canal de Ouvidoria Interna── */}
         <div className="mt-14">
           <div
             className="flex flex-col sm:flex-row items-center gap-6 rounded-2xl p-8 shadow-md border border-green-100"
@@ -87,7 +87,7 @@ const PessoasCulturaPage = () => {
               <ShieldCheck className="w-8 h-8 text-white" />
             </div>
             <div className="flex-1 text-center sm:text-left">
-              <h3 className="text-xl font-bold text-gray-900 mb-1">Canal de Denúncia Anônima</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">Canal de Ouvidoria Interna</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Relate irregularidades, assédio, fraudes ou condutas que violem os valores da LOCAR com total sigilo e sem qualquer identificação.
               </p>

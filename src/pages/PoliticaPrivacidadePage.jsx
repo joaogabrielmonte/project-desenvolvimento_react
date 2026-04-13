@@ -70,7 +70,7 @@ const PoliticaPrivacidadePage = () => {
                 enviados ao sistema interno <em>sistemas.locar.srv.br</em> para registro e apuração.
               </li>
               <li>
-                <strong>Canal de Denúncia</strong> — <strong>anônimo por padrão</strong>: coletamos
+                <strong>Canal de Ouvidoria Interna</strong> — <strong>anônimo por padrão</strong>: coletamos
                 apenas categoria, local e descrição do fato, sem nenhum dado pessoal identificável.
               </li>
               <li>

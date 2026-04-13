@@ -141,7 +141,7 @@ export default function DenunciaPage() {
               Ética &amp; Transparência
             </p>
             <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-              Canal de Denúncia Anônima
+              Canal de Ouvidoria Interna
             </h1>
             <p className="text-green-200 mt-1 text-sm md:text-base">
               Fale com segurança. Sua identidade é completamente protegida.
