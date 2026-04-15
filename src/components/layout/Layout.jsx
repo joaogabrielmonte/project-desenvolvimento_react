@@ -92,7 +92,7 @@ const Layout = () => {
      
 
       <Footer />
-      <CookieBanner />
+     {false && <CookieBanner />}
     </div>
   );
 };
