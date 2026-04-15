@@ -21,7 +21,7 @@ import SistemasPage from "./pages/SistemasPage";
 import OuvidoriaPage from "./pages/OuvidoriaPage";
 import DenunciaPage from "./pages/DenunciaPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import PoliticaPrivacidadePage from "./pages/PoliticaPrivacidadePage";
+//import PoliticaPrivacidadePage from "./pages/PoliticaPrivacidadePage";
 
 function App() {
   return (
