@@ -726,12 +726,23 @@ const GrupoPage = () => {
                     style={{ color: "#c3cd86" }}
                   />
                   <p className="text-white text-sm leading-relaxed">
-                    Confiança : Agimos com honestidade, ética, integridade,
+                    Confiança: Agimos com honestidade, ética, integridade,
                     lealdade e respeito. Foco em Resultados: Alinhamos nosso
                     trabalho ao planejamento estratégico, buscando a eficiência
                     e a excelência. Ser o Melhor na Nossa Atividade: Buscamos
                     ser 1% melhores a cada dia, com autonomia, proatividade e
-                    desenvolvimento contínuo.
+                    desenvolvimento contínuo. Pertencer à equipe: Valorizamos a
+                    colaboração, o respeito, a diversidade, o crescimento mútuo
+                    e o trabalho em equipe. Qualidade no Serviço Prestado:
+                    Oferecemos serviços de alta qualidade, respeitando processos
+                    e buscando melhorias contínuas. Responsabilidade Social:
+                    Reconhecemos as diferenças culturais, econômicas e
+                    ambientais nas regiões onde operamos, adaptando nossos
+                    serviços para atender às necessidades específicas de cada
+                    local. Inovação: Encorajamos a criatividade, aceitando o
+                    risco como parte do processo de inovação, incentivando a
+                    atualização tecnológica e valorizando o feedback e a
+                    agilidade.
                   </p>
                 </div>
               </div>
