@@ -98,7 +98,7 @@ const PessoasCulturaPage = () => {
               style={{ background: "#034422" }}
             >
               <ShieldCheck className="w-4 h-4" />
-              Fazer Denúncia
+              Acessar Ouvidoria Interna
             </Link>
           </div>
         </div>
