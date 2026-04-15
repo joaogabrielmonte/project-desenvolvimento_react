@@ -42,7 +42,7 @@ function App() {
           <Route path="sistemas" element={<SistemasPage />} />
           <Route path="ouvidoria" element={<OuvidoriaPage />} />
           <Route path="denuncia" element={<DenunciaPage />} />
-          <Route path="politica-privacidade" element={<PoliticaPrivacidadePage />} />
+          {/* <Route path="politica-privacidade" element={<PoliticaPrivacidadePage />} /> */}
 
         </Route> {/* Fim da rota "pai" */}
 
