@@ -98,3 +98,23 @@
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 section[id] { scroll-margin-top: 5rem; }
+
+/* Pulso discreto nos pontos de atuação; a localização continua visível sem movimento. */
+.map-marker-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #c3cd86;
+  box-shadow: 0 0 10px rgba(195, 205, 134, .45);
+  opacity: 0;
+  pointer-events: none;
+  animation: map-marker-pulse 3.8s ease-out infinite;
+  animation-delay: var(--pulse-delay);
+}
+@keyframes map-marker-pulse {
+  0% { transform: scale(1); opacity: .48; }
+  45%, 100% { transform: scale(2); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .map-marker-pulse { animation: none; }
+}

@@ -1,5 +1,7 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/\\.well-known/(ai-catalog|ard)\\.json", "status": 404 },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

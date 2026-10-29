@@ -1,0 +1,19 @@
+# Grupo Locar
+
+> Site institucional do Grupo Locar, com informações sobre serviços ambientais, empresas do grupo e canais de atendimento.
+
+## Informações institucionais
+
+- [Início](https://locar-website.vercel.app/): apresentação do grupo e dos serviços.
+- [Grupo](https://locar-website.vercel.app/grupo): empresas e atuação do grupo.
+- [Serviços](https://locar-website.vercel.app/servicos): serviços de limpeza urbana e gestão de resíduos.
+- [Meio ambiente](https://locar-website.vercel.app/meio-ambiente): compromisso e iniciativas ambientais.
+- [Pessoas e cultura](https://locar-website.vercel.app/pessoas-cultura): informações sobre pessoas e cultura.
+- [Filiais](https://locar-website.vercel.app/filiais): locais de atuação.
+- [Comunicados](https://locar-website.vercel.app/comunicados): comunicados do grupo.
+
+## Atendimento e privacidade
+
+- [Contato](https://locar-website.vercel.app/contato): canais de contato.
+- [Ouvidoria](https://locar-website.vercel.app/ouvidoria): canal de manifestações.
+- [Política de privacidade](https://locar-website.vercel.app/politica-privacidade): informações sobre privacidade e dados pessoais.

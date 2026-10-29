@@ -151,7 +151,7 @@ const GrupoSection = () => {
 
             {/* Mapa */}
             <div className="lg:w-3/5 w-full">
-              <MapaBrasil className="w-full max-w-lg mx-auto" />
+              <MapaBrasil className="w-full max-w-xl mx-auto" />
             </div>
           </div>
         </div>

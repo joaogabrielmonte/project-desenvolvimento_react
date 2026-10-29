@@ -84,7 +84,12 @@ export default function MapaBrasil({ className = "" }) {
     <div className="relative select-none" aria-hidden="true">
       {brHtml ? <div dangerouslySetInnerHTML={{ __html: brHtml }} /> : <div className="w-full bg-white/10 rounded-lg" style={{ aspectRatio: "1000/912" }} />}
       {boHtml && <div className="absolute rounded-xl overflow-hidden border-2 border-[#c3cd86] bg-gray-50" style={{ bottom: "6%", left: "2%", width: "20%" }}><div dangerouslySetInnerHTML={{ __html: boHtml }} /><div className="text-center py-1 text-xs font-bold bg-[#c3cd86] text-[#034422]">BOLÍVIA</div></div>}
-      {brHtml && stateMarkers.map(({ id, x, y }) => <span key={id} className="absolute rounded-full w-8 h-8 flex items-center justify-center font-bold text-xs border-2 border-white bg-[#034422] text-white shadow-lg" style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}>{id}</span>)}
+      {brHtml && stateMarkers.map(({ id, x, y }, index) => (
+        <span key={id} className="absolute map-marker" style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)", "--pulse-delay": `${index * 0.35}s` }}>
+          <span className="map-marker-pulse" />
+          <span className={`relative rounded-full w-9 h-9 flex items-center justify-center font-bold text-xs border-2 shadow-lg transition-colors ${selected === id ? "border-white bg-[#c3cd86] text-[#034422]" : "border-white bg-[#034422] text-white"}`}>{id}</span>
+        </span>
+      ))}
     </div>
     <div className="mt-5">
       <p className="text-sm text-white/80 mb-3">Selecione uma região para ver as localidades:</p>
