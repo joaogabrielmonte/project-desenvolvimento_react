@@ -69,6 +69,7 @@ const Navbar = ({
 
   return (
     <nav
+      aria-label="Navegação principal"
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-lg"
@@ -172,6 +173,9 @@ const Navbar = ({
           {/* BOTÃO DO MENU MOBILE */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="menu-mobile"
             className={`md:hidden p-2 rounded-lg transition-colors ${
               isMenuDark
                 ? "text-gray-900 hover:bg-gray-100"
@@ -187,7 +191,8 @@ const Navbar = ({
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="md:hidden bg-white border-t shadow-lg"
+            id="menu-mobile"
+            className="md:hidden bg-white border-t shadow-lg max-h-[calc(100dvh-5rem)] overflow-y-auto"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
@@ -198,7 +203,7 @@ const Navbar = ({
                 <motion.div key={link.id} variants={itemVariants}>
                   <Link
                     to={link.path}
-                    className="block w-full text-left px-4 py-2 text-gray-700 hover:text-green-600 capitalize rounded-md"
+                    className="block w-full text-left px-4 py-3 text-gray-700 hover:text-green-600 capitalize rounded-md"
                   >
                     {link.label}
                   </Link>
@@ -209,7 +214,7 @@ const Navbar = ({
                 <motion.div variants={itemVariants}>
                   <Link
                     to="/sistemas"
-                    className="flex items-center w-full px-4 py-2 text-green-700 bg-green-50 rounded-lg"
+                    className="flex items-center w-full px-4 py-3 text-green-700 bg-green-50 rounded-lg"
                   >
                     <LogIn className="w-4 h-4 mr-2" />
                     Sistemas
@@ -223,7 +228,7 @@ const Navbar = ({
                         "_blank"
                       )
                     }
-                    className="flex items-center w-full px-4 py-2 text-white bg-gradient-to-r from-green-600 to-green-700 rounded-lg"
+                    className="flex items-center w-full px-4 py-3 text-white bg-gradient-to-r from-green-600 to-green-700 rounded-lg"
                   >
                     <Briefcase className="w-4 h-4 mr-2" />
                     Vagas

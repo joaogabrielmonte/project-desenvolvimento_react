@@ -21,12 +21,14 @@ const HeroSection = ({ scrollToSection }) => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-end overflow-hidden"
+      className="relative min-h-[100svh] flex items-end overflow-hidden"
       style={{ backgroundColor: "#022b16" }}
     >
       {/* Imagem de fundo — fade + zoom suave ao carregar */}
       <img
         src="/images/fotoprincipal.webp"
+        srcSet="/images/fotoprincipal-mobile.webp 1440w, /images/fotoprincipal.webp 1920w"
+        sizes="100vw"
         alt=""
         fetchPriority="high"
         decoding="async"
@@ -59,28 +61,25 @@ const HeroSection = ({ scrollToSection }) => {
       />
 
       {/* Conteúdo — coluna esquerda, metade da tela */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-20 pb-20 lg:pb-28">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 pt-28 pb-28 lg:pb-28">
         <div className="max-w-xl lg:max-w-2xl">
 
         {/* Título */}
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        <h1
           className="font-black uppercase tracking-tight leading-[0.98] mb-7 text-white"
           style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)", letterSpacing: "-0.01em" }}
         >
           Mais de 35 anos<br />
           de uma política de<br />
           <span className="text-[#c3cd86]">desenvolvimento<br />sustentável</span>
-        </motion.h1>
+        </h1>
 
         {/* Subtítulo */}
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
           transition={{ delay: 0.35, duration: 0.6 }}
-          className="text-white/80 text-base sm:text-lg leading-relaxed max-w-md mb-10 font-light"
+          className="text-white/90 text-base sm:text-lg leading-relaxed max-w-md mb-7 sm:mb-10"
         >
           Uma empresa familiar que respeita o meio ambiente e as futuras
           gerações, oferecendo soluções sustentáveis e tecnológicas para o
@@ -102,7 +101,7 @@ const HeroSection = ({ scrollToSection }) => {
           </button>
           <button
             onClick={() => scrollToSection("contato")}
-            className="text-white/80 text-sm font-medium border-b border-white/20 pb-px hover:text-white hover:border-white/60 transition-colors"
+            className="min-h-11 inline-flex items-center text-white text-sm font-medium border-b border-white/40 hover:border-white transition-colors"
           >
             Entre em contato
           </button>
@@ -117,16 +116,16 @@ const HeroSection = ({ scrollToSection }) => {
         animate={mounted ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: 0.9, duration: 0.6 }}
         aria-label="Rolar para baixo"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer group"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer group"
       >
-        <span className="text-white/30 text-[10px] uppercase tracking-widest font-medium group-hover:text-white/60 transition-colors">
+        <span className="text-white/80 text-[10px] uppercase tracking-widest font-medium group-hover:text-white/60 transition-colors">
           Conheça mais
         </span>
         <motion.div
           animate={reduceMotion ? { y: 0 } : { y: [0, 5, 0] }}
           transition={reduceMotion ? { duration: 0 } : { repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
         >
-          <ChevronDown className="w-5 h-5 text-white/30 group-hover:text-white/60 transition-colors" />
+          <ChevronDown className="w-5 h-5 text-white/80 group-hover:text-white transition-colors" />
         </motion.div>
       </motion.button>
 

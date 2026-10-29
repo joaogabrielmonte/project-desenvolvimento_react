@@ -21,7 +21,7 @@ const services = [
   {
     icon: <Recycle className="w-6 h-6" />,
     title: "Coleta de Resíduos Sólidos",
-    image: "/images/servicos/coletaderesiduo.jpg",
+    image: "/images/servicos/coletaderesiduo.webp",
     description: `Coletar o lixo significa recolher o lixo acondicionado por quem o produz para encaminhá-lo, mediante transporte adequado, a uma estação de transferência, tratamento ou disposição final. O objetivo é evitar a proliferação de vetores causadores de doenças, como ratos, baratas e moscas.`,
     features: [
       "Domiciliares", "Containerizada", "Comerciais", "Públicos",
@@ -110,7 +110,8 @@ const ServicesSection = () => {
             {services.map((service) => (
               <button
                 key={service.title}
-                onClick={() => setActiveService(service)} // 3. Atualiza o serviço ativo
+                onClick={() => setActiveService(service)}
+                aria-pressed={activeService.title === service.title}
                 className={`flex items-center p-4 rounded-lg transition-all text-left ${
                   activeService.title === service.title
                     // Estilo do botão ATIVO
@@ -126,10 +127,10 @@ const ServicesSection = () => {
           </div>
 
           {/* Coluna 2: O CONTEÚDO DO SERVIÇO ATIVO */}
-          <div className="md:col-span-2 bg-gray-50 rounded-2xl p-8 sticky top-28">
+          <div className="md:col-span-2 bg-gray-50 rounded-2xl p-5 sm:p-8 md:sticky md:top-28">
             {/* Cabeçalho: título + imagem lado a lado */}
-            <div className="flex items-start justify-between gap-4 mb-4">
-              <h3 className="text-3xl font-bold text-gray-900 leading-tight">
+            <div className="flex flex-col sm:flex-row items-start justify-between gap-4 mb-4">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
                 {activeService.title}
               </h3>
               {activeService.image && (
@@ -137,7 +138,9 @@ const ServicesSection = () => {
                   key={activeService.image}
                   src={activeService.image}
                   alt={activeService.title}
-                  className="w-48 h-32 object-cover rounded-xl shadow-md flex-shrink-0"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-44 sm:w-48 sm:h-32 object-cover rounded-xl shadow-md flex-shrink-0"
                 />
               )}
             </div>

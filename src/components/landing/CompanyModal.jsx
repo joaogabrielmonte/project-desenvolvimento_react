@@ -27,6 +27,7 @@ const CompanyModal = ({ company, onClose }) => {
       >
         {/* Botão de Fechar 'X' */}
         <button
+          aria-label="Fechar detalhes da empresa"
           onClick={onClose}
           className="absolute top-4 right-4 p-2 text-gray-500 rounded-full hover:bg-gray-100 hover:text-gray-800 transition-colors z-10"
         >

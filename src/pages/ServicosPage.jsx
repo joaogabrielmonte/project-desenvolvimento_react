@@ -21,7 +21,7 @@ const services = [
   {
     icon: <Recycle />,
     title: "Coleta de Resíduos Sólidos",
-    image: "/images/servicos/coletaderesiduo.jpg",
+    image: "/images/servicos/coletaderesiduo.webp",
     objectPosition: "center", 
     description: `Coletar o lixo significa recolher o lixo acondicionado por quem o produz para encaminhá-lo, mediante transporte adequado, a uma estação de transferência, tratamento ou disposição final. O objetivo é evitar a proliferação de vetores causadores de doenças.`,
     features: [

@@ -107,7 +107,7 @@ const GrupoSection = () => {
         className="mt-20 mx-4 sm:mx-6 lg:mx-8 rounded-3xl overflow-hidden"
         style={{ background: "linear-gradient(135deg, #021a0e 0%, #034422 100%)" }}
       >
-        <div className="max-w-7xl mx-auto px-8 py-14">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
           <div className="flex flex-col lg:flex-row items-center gap-12">
 
             {/* Texto lateral */}
@@ -123,7 +123,7 @@ const GrupoSection = () => {
               </p>
 
               {/* Mini stats */}
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-3 gap-2 sm:gap-6">
                 {[
                   ["30+", "Municípios"],
                   ["7", "Estados"],
@@ -131,7 +131,7 @@ const GrupoSection = () => {
                 ].map(([value, label]) => (
                   <div key={label}>
                     <div className="text-3xl font-black text-white leading-none">{value}</div>
-                    <div className="text-[10px] text-white/80 uppercase tracking-widest mt-1">{label}</div>
+                    <div className="text-[10px] text-white/80 uppercase tracking-wide mt-1">{label}</div>
                   </div>
                 ))}
               </div>
