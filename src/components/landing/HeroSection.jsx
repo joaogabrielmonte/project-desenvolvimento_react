@@ -5,10 +5,11 @@
  * @version    2.0 (30/03/2026)
  */
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
 const HeroSection = ({ scrollToSection }) => {
+  const reduceMotion = useReducedMotion();
   const [imgLoaded, setImgLoaded] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -25,9 +26,9 @@ const HeroSection = ({ scrollToSection }) => {
     >
       {/* Imagem de fundo — fade + zoom suave ao carregar */}
       <img
-        src="/images/fotoprincipal.jpg"
+        src="/images/fotoprincipal.webp"
         alt=""
-        fetchpriority="high"
+        fetchPriority="high"
         decoding="async"
         onLoad={() => setImgLoaded(true)}
         className="absolute inset-0 w-full h-full object-cover object-center"
@@ -79,7 +80,7 @@ const HeroSection = ({ scrollToSection }) => {
           initial={{ opacity: 0, y: 14 }}
           animate={mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
           transition={{ delay: 0.35, duration: 0.6 }}
-          className="text-white/55 text-base sm:text-lg leading-relaxed max-w-md mb-10 font-light"
+          className="text-white/80 text-base sm:text-lg leading-relaxed max-w-md mb-10 font-light"
         >
           Uma empresa familiar que respeita o meio ambiente e as futuras
           gerações, oferecendo soluções sustentáveis e tecnológicas para o
@@ -101,7 +102,7 @@ const HeroSection = ({ scrollToSection }) => {
           </button>
           <button
             onClick={() => scrollToSection("contato")}
-            className="text-white/55 text-sm font-medium border-b border-white/20 pb-px hover:text-white hover:border-white/60 transition-colors"
+            className="text-white/80 text-sm font-medium border-b border-white/20 pb-px hover:text-white hover:border-white/60 transition-colors"
           >
             Entre em contato
           </button>
@@ -122,8 +123,8 @@ const HeroSection = ({ scrollToSection }) => {
           Conheça mais
         </span>
         <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+          animate={reduceMotion ? { y: 0 } : { y: [0, 5, 0] }}
+          transition={reduceMotion ? { duration: 0 } : { repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
         >
           <ChevronDown className="w-5 h-5 text-white/30 group-hover:text-white/60 transition-colors" />
         </motion.div>

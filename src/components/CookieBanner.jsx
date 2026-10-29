@@ -1,96 +1,25 @@
-/**
- * @author     Joao Gabriel
- * @enterprise Execut Tecnologia
- * @initiated  09/04/2026
- * @version    1.0
- */
-import React, { useState, useEffect } from "react";
-import { Cookie, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const STORAGE_KEY = "locar_cookie_consent";
+const STORAGE_KEY = "locar_privacy_notice_v1";
 
-const CookieBanner = () => {
+export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
-
   useEffect(() => {
-    if (!localStorage.getItem(STORAGE_KEY)) {
-      // Pequeno delay para não disputar com a animação do Hero
-      const t = setTimeout(() => setVisible(true), 1200);
-      return () => clearTimeout(t);
-    }
+    try { setVisible(!localStorage.getItem(STORAGE_KEY)); }
+    catch { setVisible(true); }
   }, []);
-
-  const accept = () => {
-    localStorage.setItem(STORAGE_KEY, "accepted");
+  const acknowledge = () => {
+    try { localStorage.setItem(STORAGE_KEY, "acknowledged"); } catch { /* A navegação continua disponível. */ }
     setVisible(false);
   };
-
-  const decline = () => {
-    localStorage.setItem(STORAGE_KEY, "declined");
-    setVisible(false);
-  };
-
-  // Fechar com X: apenas esconde na sessão atual, sem salvar no localStorage
-  const dismiss = () => setVisible(false);
-
   if (!visible) return null;
-
   return (
-    <div
-      className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6"
-      role="dialog"
-      aria-label="Aviso de cookies"
-      aria-modal="false"
-    >
-      <div className="max-w-4xl mx-auto bg-gray-900 text-white rounded-2xl shadow-2xl border border-gray-700 p-5 sm:p-6">
-        {/* Linha superior: ícone + texto + X */}
-        <div className="flex items-start gap-4">
-          {/* Ícone */}
-          <div className="flex-shrink-0 bg-green-600/20 rounded-xl p-3">
-            <Cookie className="w-6 h-6 text-green-400" />
-          </div>
-
-          {/* Texto */}
-          <div className="flex-1 text-sm text-gray-300 leading-relaxed">
-            Utilizamos cookies para melhorar sua experiência de navegação. Ao continuar,
-            você concorda com nossa{" "}
-            <a
-              href="/politica-privacidade"
-              className="text-green-400 hover:text-green-300 underline underline-offset-2 transition-colors"
-            >
-              Política de Privacidade
-            </a>
-            .
-          </div>
-
-          {/* Fechar (X) — sempre dentro da caixa, alinhado ao topo */}
-          <button
-            onClick={dismiss}
-            aria-label="Fechar"
-            className="flex-shrink-0 text-gray-500 hover:text-white transition-colors mt-0.5"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Botões na linha de baixo */}
-        <div className="flex items-center justify-end gap-3 mt-4">
-          <button
-            onClick={decline}
-            className="px-4 py-2 text-sm text-gray-400 hover:text-white border border-gray-600 hover:border-gray-400 rounded-lg transition-colors"
-          >
-            Recusar
-          </button>
-          <button
-            onClick={accept}
-            className="px-5 py-2 text-sm font-semibold bg-green-600 hover:bg-green-500 text-white rounded-lg transition-colors"
-          >
-            Aceitar
-          </button>
-        </div>
+    <aside aria-label="Aviso de privacidade" className="fixed bottom-0 inset-x-0 z-50 p-4 sm:p-6">
+      <div className="max-w-4xl mx-auto bg-gray-900 text-white rounded-2xl shadow-2xl border border-gray-700 p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+        <p className="flex-1 text-sm text-gray-200 leading-relaxed">Usamos o armazenamento local para lembrar que você leu este aviso. O mapa do Google só é carregado quando você solicitar. Saiba mais na nossa <Link to="/politica-privacidade" className="text-green-300 underline underline-offset-2">Política de Privacidade</Link>.</p>
+        <button type="button" onClick={acknowledge} className="px-5 py-2 font-semibold bg-green-600 hover:bg-green-500 text-white rounded-lg">Entendi</button>
       </div>
-    </div>
+    </aside>
   );
-};
-
-export default CookieBanner;
+}

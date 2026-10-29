@@ -4,29 +4,29 @@
  * @initiated  21/10/2025
  * @version    2.0 (30/03/2026)
  */
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Importações
 import Layout from "./components/layout/Layout";
 import LocarLanding from "./components/LocarLanding";
-import GrupoPage from "./pages/GrupoPage";
-import ComunicadosPage from "./pages/ComunicadosPage";
-import ServicosPage from "./pages/ServicosPage";
-import MeioAmbientePage from "./pages/MeioAmbientePage";
-import PessoasCulturaPage from "./pages/PessoasCulturaPage";
-import ContatoPage from "./pages/ContatoPage";
-import FiliaisPage from "./pages/FiliaisPage";
-import SistemasPage from "./pages/SistemasPage";
-import OuvidoriaPage from "./pages/OuvidoriaPage";
-import DenunciaPage from "./pages/DenunciaPage";
-import NotFoundPage from "./pages/NotFoundPage";
-//import PoliticaPrivacidadePage from "./pages/PoliticaPrivacidadePage";
+const GrupoPage = lazy(() => import("./pages/GrupoPage"));
+const ComunicadosPage = lazy(() => import("./pages/ComunicadosPage"));
+const ServicosPage = lazy(() => import("./pages/ServicosPage"));
+const MeioAmbientePage = lazy(() => import("./pages/MeioAmbientePage"));
+const PessoasCulturaPage = lazy(() => import("./pages/PessoasCulturaPage"));
+const ContatoPage = lazy(() => import("./pages/ContatoPage"));
+const FiliaisPage = lazy(() => import("./pages/FiliaisPage"));
+const SistemasPage = lazy(() => import("./pages/SistemasPage"));
+const OuvidoriaPage = lazy(() => import("./pages/OuvidoriaPage"));
+const DenunciaPage = lazy(() => import("./pages/DenunciaPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const PoliticaPrivacidadePage = lazy(() => import("./pages/PoliticaPrivacidadePage"));
 
 function App() {
   return (
     <Router>
-      <Routes>
+      <Suspense fallback={<div role="status" className="p-8">Carregando...</div>}><Routes>
         {/* A rota "pai" TEM que ser o Layout */}
         <Route path="/" element={<Layout />}>
           
@@ -42,7 +42,7 @@ function App() {
           <Route path="sistemas" element={<SistemasPage />} />
           <Route path="ouvidoria" element={<OuvidoriaPage />} />
           <Route path="denuncia" element={<DenunciaPage />} />
-          {/* <Route path="politica-privacidade" element={<PoliticaPrivacidadePage />} /> */}
+          <Route path="politica-privacidade" element={<PoliticaPrivacidadePage />} />
 
         </Route> {/* Fim da rota "pai" */}
 
@@ -50,7 +50,7 @@ function App() {
         {/* 2. Rota 404 (Catch-all) - Fora do Layout */}
         {/* O asterisco (*) captura qualquer URL que não combinou com as rotas acima */}
         <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      </Routes></Suspense>
     </Router>
   );
 }

@@ -138,6 +138,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Acesso Rápido</h4>
             <ul className="space-y-2">
+              <li><Link to="/politica-privacidade" className="text-gray-400 hover:text-green-400 transition-colors">Política de Privacidade</Link></li>
               <li>
                 <Link
                   to="/sistemas"
