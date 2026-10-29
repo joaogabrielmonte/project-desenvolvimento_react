@@ -31,6 +31,7 @@ const Toast = ({ message, type, onclose }) => {
 
 // Componente principal da seção de contato
 const ContactSection = () => {
+  const [showMap, setShowMap] = useState(false);
   // Estado para os dados do formulário
   const [formData, setFormData] = useState({
     name: '',
@@ -174,7 +175,8 @@ const ContactSection = () => {
               </div>
             </div>
             <div className="h-64 rounded-xl overflow-hidden">
-               <iframe
+               {showMap ? <iframe
+                title="Localização da Locar no Google Maps"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.480327339089!2d-34.91266002499616!3d-8.05219919197607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab18edd222621b%3A0x8dd0b1351112444b!2sEstr.%20das%20Ubaias%2C%20540%20-%20Casa%20Forte%2C%20Recife%20-%20PE%2C%2052061-080!5e0!3m2!1spt-BR!2sbr!4v1729220074219!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
@@ -182,7 +184,7 @@ const ContactSection = () => {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+              ></iframe> : <div className="h-full bg-green-950/60 p-6 flex flex-col items-start justify-center gap-3"><p>Ao carregar o mapa, você se conecta ao Google Maps, que pode coletar dados de navegação.</p><button type="button" onClick={() => setShowMap(true)} className="px-4 py-2 bg-green-600 rounded-lg font-semibold hover:bg-green-500">Carregar mapa</button></div>}
             </div>
           </div>
           {/* Canais de atendimento em destaque */}

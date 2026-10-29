@@ -118,7 +118,7 @@ const GrupoSection = () => {
               <h3 className="text-3xl md:text-4xl font-black text-white leading-tight mb-5">
                 Onde atuamos
               </h3>
-              <p className="text-white/50 text-sm leading-relaxed mb-10">
+              <p className="text-white/80 text-base leading-relaxed mb-10">
                 Com operações em 7 estados brasileiros e mais de 30 municípios atendidos, o Grupo Locar também tem presença internacional na Bolívia.
               </p>
 
@@ -131,7 +131,7 @@ const GrupoSection = () => {
                 ].map(([value, label]) => (
                   <div key={label}>
                     <div className="text-3xl font-black text-white leading-none">{value}</div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-widest mt-1">{label}</div>
+                    <div className="text-[10px] text-white/80 uppercase tracking-widest mt-1">{label}</div>
                   </div>
                 ))}
               </div>
@@ -140,11 +140,11 @@ const GrupoSection = () => {
               <div className="mt-10 flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: "#038242", boxShadow: "0 0 8px rgba(3,130,66,0.7)" }} />
-                  <span className="text-white/60 text-xs">Estados ativos no Brasil</span>
+                  <span className="text-white/80 text-sm">Estados ativos no Brasil</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: "#c3cd86", boxShadow: "0 0 8px rgba(195,205,134,0.7)" }} />
-                  <span className="text-white/60 text-xs">Bolívia (Santa Cruz de la Sierra)</span>
+                  <span className="text-white/80 text-sm">Bolívia (Santa Cruz de la Sierra)</span>
                 </div>
               </div>
             </div>

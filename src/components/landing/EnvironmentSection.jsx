@@ -4,7 +4,7 @@
  * @initiated  21/10/2025
  * @version    2.0 (30/03/2026)
  */
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { Award, Briefcase, CheckCircle, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 
 const carouselImages = [
@@ -17,13 +17,9 @@ const carouselImages = [
 const EnvironmentSection = () => {
   const [current, setCurrent] = useState(0);
 
-  const next = useCallback(() => setCurrent((c) => (c + 1) % carouselImages.length), []);
+  const next = () => setCurrent((c) => (c + 1) % carouselImages.length);
   const prev = () => setCurrent((c) => (c - 1 + carouselImages.length) % carouselImages.length);
 
-  useEffect(() => {
-    const timer = setInterval(next, 4000);
-    return () => clearInterval(timer);
-  }, [next]);
 
   return (
     <section
@@ -72,7 +68,7 @@ const EnvironmentSection = () => {
             <button
               onClick={prev}
               aria-label="Anterior"
-              className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 transition-colors z-10"
+              className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-3 transition-colors z-10"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -80,7 +76,7 @@ const EnvironmentSection = () => {
             <button
               onClick={next}
               aria-label="Próximo"
-              className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 transition-colors z-10"
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-3 transition-colors z-10"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -91,10 +87,10 @@ const EnvironmentSection = () => {
                   key={i}
                   onClick={() => setCurrent(i)}
                   aria-label={`Ir para imagem ${i + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    i === current ? "bg-white w-6" : "bg-white/50 w-2"
-                  }`}
-                />
+                  aria-current={i === current ? "true" : undefined}
+                  className="w-11 h-11 flex items-center justify-center"
+                ><span className={`h-2 rounded-full transition-all duration-300 ${i === current ? "bg-white w-6" : "bg-white/70 w-2"}`} />
+                </button>
               ))}
             </div>
           </div>
